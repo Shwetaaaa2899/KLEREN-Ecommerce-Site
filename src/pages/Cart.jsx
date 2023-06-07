@@ -52,6 +52,10 @@ cart.length>0?cart?.map((product) =>    <div class="card">
  {product.title}</h1>
 </div>
 <div class="title">
+ <h1>
+Price {product.price}</h1>
+</div>
+<div class="title">
 <h3>Quantity : {IsQuantityGreaterThanOne(product)}</h3>
 </div>
 
