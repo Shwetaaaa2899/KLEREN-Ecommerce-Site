@@ -47,8 +47,8 @@ switch(action.type){
          
                      genre:[],
                       maximum:0,
-                      minimum:0,
-                      price:0
+                      minimum:300,
+                      price:300
                      }
                 // return {...state,allFlag : !state.allFlag}
              case "CLEAR-FILTER":
@@ -56,14 +56,7 @@ switch(action.type){
              return    {
                   
                  ...state,
-                    sort: "",
-                    search: "",
-                    categoryInput:"",
-        
-                    genre:[],
-                     maximum:0,
-                     minimum:0,
-                     price:0
+                    filter:state.filter + 1
                     }
      default:
                 return state
@@ -79,13 +72,15 @@ export const initialState = {islaoding:true,
     backup:[],
  
    ProductToBeDetailed:{},
+ 
+    genre:[],
+    maximumPrice:0,
+    minimumPrice:300,
+    price:300,
     sort: "",
     search: "",
     categoryInput:"",
-    genre:[],
-    maximumPrice:0,
-    minimumPrice:0,
-    price:300,
+    filter:0
    
     }
 export default ProductsReducer;

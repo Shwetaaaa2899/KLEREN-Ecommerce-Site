@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 const Filter = () => {
   const { state :{products,genre,price,maximumPrice,minimumPrice},getData, dispatch } = CartState()
 
+
   const setInputText = (e) =>{
     dispatch({type:"SEARCH",payload:e.target.value})
   }
@@ -63,7 +64,7 @@ const payloadObj = {name,value}
       </div> 
       <h3>Sort By Category</h3>
       
-      <input type="text" onChange={(e) => sortByRange(e)} name="myInput"  />
+      <input type="text"  onChange={(e) => sortByRange(e)} name="myInput"  />
       <input
         type="radio"
         name = "gender"
