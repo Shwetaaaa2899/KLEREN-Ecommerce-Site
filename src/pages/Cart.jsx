@@ -38,7 +38,7 @@ cart.length>0?cart?.map((product) =>    <div class="card">
 
 
  
- <h1>{product.title}</h1>
+
  <div  style = {{color: handlewishlistCheck(product)?"red":"black"}}  className="menu" onClick={() => addtoWishListHandler(product)}> 
 <AiFillHeart   />
      </div>

@@ -52,7 +52,7 @@ const CartListHandler = (product) =>{
  {product.title}</h1>
 </div>
 <div class="des">
- {/* <p>{product.description}...</p> */}
+<label>Price:</label>{product.price}
  <button  style = {{textDecoration:"none" , color:"white" ,border:"none"}} >
 
 <NavLink   className = "navlink-btn"  to = {`/products/${product._id}`} >Show in Detail</NavLink>

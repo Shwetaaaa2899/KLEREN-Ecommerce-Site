@@ -8,6 +8,7 @@ const PaymentDetail = () =>{
 
     cart?.length > 0  && <div>
     <h1>Total Price is:{totalprice}</h1>
+  
     </div>
   }     
         
