@@ -64,7 +64,7 @@ const payloadObj = {name,value}
       </div> 
       <h3>Sort By Category</h3>
       
-      <input type="text"  onChange={(e) => sortByRange(e)} name="myInput"  />
+      <input type="text"  placeholder = "search" onChange={(e) => sortByRange(e)} name="myInput"  />
       <input
         type="radio"
         name = "gender"
