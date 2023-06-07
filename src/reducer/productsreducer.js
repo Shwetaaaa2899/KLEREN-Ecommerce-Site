@@ -47,7 +47,7 @@ switch(action.type){
          
                      genre:[],
                       maximum:0,
-                      minimum:300,
+                      minimum:0,
                       price:300
                      }
                 // return {...state,allFlag : !state.allFlag}
@@ -75,7 +75,7 @@ export const initialState = {islaoding:true,
  
     genre:[],
     maximumPrice:0,
-    minimumPrice:300,
+    minimumPrice:0,
     price:300,
     sort: "",
     search: "",
