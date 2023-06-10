@@ -9,11 +9,11 @@ import { MdOutlineExplore } from "react-icons/md"
 
 
 export default function  Navigation(){
-    const {userState:{login} ,token,logoutHandler} = AuthContext()
+    const {isLoggedIn ,token,logoutHandler,userInfo} = AuthContext()
 const { state:{cart} } = CartListState()
 const {value: {wishlist} } = WishListState()
 
-
+// console.log("userinfo post login is",userInfo,"and login flag is",isLoggedIn)
    return <>
     <nav>
     <div className="container">
@@ -37,7 +37,7 @@ const {value: {wishlist} } = WishListState()
                 <li  >
         
               {
-                token && login  ?  <NavLink to = "/profile" > <RiAccountCircleFill  style = {{color:"black",  fontSize :"25px"}}/>
+                token && isLoggedIn  ?  <NavLink to = "/profile" > <RiAccountCircleFill  style = {{color:"black",  fontSize :"25px"}}/>
                    
                    </NavLink>
                    :
@@ -55,7 +55,7 @@ const {value: {wishlist} } = WishListState()
          </li>
 
 
-        {token && login && <li>    <div onClick = {logoutHandler}> <NavLink to = "/logout" className = 'link link-active'>Log out</NavLink></div>
+        { isLoggedIn && token && <li>    <div onClick = {logoutHandler}> <NavLink to = "/logout" className = 'link link-active'>Log out</NavLink></div>
          </li>
         }
         </ul>

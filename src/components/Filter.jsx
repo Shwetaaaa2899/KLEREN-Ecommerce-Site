@@ -28,7 +28,7 @@ const Filter = () => {
       dispatch({type:"GENRE",payload:e.target.value}) 
      }
       const  ClearFilterHandler = () => {
-        dispatch({type:"CLEAR-FILTER"}) 
+        // dispatch({type:"CLEAR-FILTER"}) 
       }
       const sortByRange = (e) =>{
         const name = e.target.name;

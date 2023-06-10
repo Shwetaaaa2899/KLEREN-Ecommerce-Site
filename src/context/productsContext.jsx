@@ -58,7 +58,7 @@ const filteredDataOnInput = state?.categoryInput !== ""?filteredDataOnSort.filte
 const filteredDataOnPrice =  state?.price > 300 ?filteredDataOnInput.filter((prod) => prod.price <= state?.price)
 :filteredDataOnInput
 
-console.log(state.allFlag)
+// console.log(state.allFlag)
 const filteredData = state?.genre.length>0 ?
 filteredDataOnPrice.filter((product) => state?.genre.includes(product.genre)):
 filteredDataOnPrice

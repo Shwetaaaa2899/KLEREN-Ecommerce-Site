@@ -6,44 +6,52 @@ import "./css/Form.css"
 export default function Auth() {
    const location = useLocation()
    const navigate = useNavigate()
-
-    const { loginHandler,token } = AuthContext()
-    const [email,setInp] = useState("")
-  const  userData = {email : "adarshbalika@gmail.com",
-password:"adarshbalika"} 
-    // console.log("location in auth page is",location)
-    const[password,setPass] = useState("")
-    
-    const loginClickHandler = () =>{
-      email && password&&  loginHandler({email,password})
+const [userLoginInfo,setUserLoginInfo] = useState({email:"",password:""})
+    const { isLoggedIn,loginHandler,toggelSignInHandler,token } = AuthContext()
+    console.log(isLoggedIn,"pre setting true")
+  const  userGuestData = {email : "adarshbalika@gmail.com",password:"adarshbalika"} 
+   
+    const loginDetailSetter= (e) =>{
+      
+      setUserLoginInfo({...userLoginInfo,[e.target.name] :e.target.value})
+      //  loginHandler({email,password})
         // navigate("/products")
 
 }
+const loginClickHandler = () =>{
+  console.log(userLoginInfo.email,"and pass is",userLoginInfo.password)
+  
+}
 const loginAsGuestHandler = () =>{
-setInp("adarshbalika@gmail.com")
-setPass("adarshbalika")
 
-// toast("Logged in as Guest")
-loginHandler(userData)
+
+loginHandler(userGuestData)
+
+// toast("Logged in as Guest") --messing up with logged in pop up
+
 // navigate("/profile")
 
+}
+const preventData = (e) =>{
+  e.preventDefault()
+  loginHandler(userLoginInfo)
 }
     
     return <>
 
 <div className="form-box">
   <h5 className="form-step">Login</h5>
-  <form>
-  <div className="field1">   <input  required value = {email} type  = "text" name = "name"  onChange = {(e) => setInp( e.target.value)} placeholder="Name"/>
+  <form onSubmit = {preventData}>
+  <div className="field1">   <input  required  type  = "text" name = "email"  onChange = {loginDetailSetter} placeholder="Name"/>
     
-      <input required  value = {password} type = "password" onChange = {(e) => setPass(  e.target.value)}  placeholder="Password" />
+      <input required   type = "password" name = "password"  onChange = {loginDetailSetter}  placeholder="Password" />
     
     </div>
     <button onClick = {loginClickHandler } type="submit" id="submitBtn" className="submitBtn">submit</button>
   
     </form>
     <button onClick = {loginAsGuestHandler}   className="submitBtn" type="submit">Login As Guest?</button>
-    { !token  &&   <button className="submitBtn" type="submit">   <NavLink to = "/signup"style = {{textDecoration:"none" , color:"white" ,border:"none"}} className="submitBtn">Create a New Account?Sign Up</NavLink> </button>}
+ <button className="submitBtn" type="submit">   <NavLink to = "/signup"style = {{textDecoration:"none" , color:"white" ,border:"none"}} className="submitBtn">Create a New Account?Sign Up</NavLink> </button>
   </div>
 
  
