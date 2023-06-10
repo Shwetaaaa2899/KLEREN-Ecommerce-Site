@@ -42,7 +42,7 @@ const preventData = (e) =>{
 <div className="form-box">
   <h5 className="form-step">Login</h5>
   <form onSubmit = {preventData}>
-  <div className="field1">   <input  required  type  = "text" name = "email"  onChange = {loginDetailSetter} placeholder="Name"/>
+  <div className="field1">   <input  required  type  = "text" name = "email"  onChange = {loginDetailSetter} placeholder="Email Address"/>
     
       <input required   type = "password" name = "password"  onChange = {loginDetailSetter}  placeholder="Password" />
     

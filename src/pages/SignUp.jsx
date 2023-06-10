@@ -23,7 +23,16 @@ export default function Auth() {
       }
      
       const submitHandler = () =>{
-        signUpHandler(userSignUpDetails);
+        const{email,password,confirmPassword,firstName,lastName} =  userSignUpDetails
+   
+        if(email.length<= 0 ||password.length<=0 ||confirmPassword.length<=0||firstName.length<=0 ||lastName.length<=0){
+          toast("Please fill the details")
+        }
+        else{
+        
+          signUpHandler(userSignUpDetails);
+        }
+      
    
       }
       const preventData = (e) =>{

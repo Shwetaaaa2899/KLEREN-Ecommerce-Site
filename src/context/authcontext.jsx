@@ -30,7 +30,8 @@ const signUpHandler = async({
   }) =>{
    if(password ===confirmPassword)
    {
-try{
+console.log(email,password)
+     try{
         const passobj = {email,password}
 
     const sendreq =await fetch("/api/auth/signup",{
@@ -39,6 +40,7 @@ try{
     'Content-Type':'application/json'},
         body:JSON.stringify(passobj)
     })
+    console.log("response is ",sendreq,sendreq.status)
     if(sendreq.status === 201){
     const { createdUser, encodedToken } = await sendreq.json();
     // console.log("received token from server fr signup",createdUser,encodedToken)
@@ -55,25 +57,42 @@ try{
         console.log("My token is",token)
         // storing these values of localstorage in the hook
         setToken(token)
-        setUserInfo(user)
+        // setUserInfo(user)
            
         toast("Signed Up succesfully.Please login to continue")
         navigate("/auth");
         // navigate("/products");
         // setUserState({...userState,login:true})
+        }
+         else if (sendreq.status === 422) {
+            toast.error(
+              "User email already exists! Please try signing up with another email!"
+            );
+          }
+          
+      }
+    
+    catch(e){
+console.log("error,",e)   
+        // const {
+        //     response: { status },
+        //   } = e;
+        console.log(e)
+         
+        
+    
     }
-    } catch(e){}
 
 
 
     
 
     }
+    else{
+      toast("Your password is not matching ")
+  }
 
 
-else{
-    toast("Your password is not matching ")
-}
 
    }
   
