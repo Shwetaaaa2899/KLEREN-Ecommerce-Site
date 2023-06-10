@@ -4,14 +4,14 @@ import { NavLink } from "react-router-dom";
 
 
 const Filter = () => {
-  const { state :{products,genre,price,maximumPrice,minimumPrice},getData, dispatch } = CartState()
+  const { state :{all,genre,price,maximumPrice,minimumPrice,sort,categoryInput},getData, dispatch } = CartState()
 
-
+console.log("sort is",sort)
   const setInputText = (e) =>{
     dispatch({type:"SEARCH",payload:e.target.value})
   }
   const showAllProducts = () => {
-    console.log("1st step")
+    // console.log("1st step")
     dispatch({type:"DISPLAY-ALL-PRODUCTS"})
   }
   const filterDataonCategory = (e) =>{
@@ -22,13 +22,14 @@ const Filter = () => {
    
   }
   const filterDataonSort = (e) =>{
+    console.log("data",e.target.value)
     dispatch({type:"SORT",payload:e.target.value}) 
   }
      const filterDataonCheck = (e) =>{
       dispatch({type:"GENRE",payload:e.target.value}) 
      }
       const  ClearFilterHandler = () => {
-        // dispatch({type:"CLEAR-FILTER"}) 
+        dispatch({type:"CLEAR-FILTER"}) 
       }
       const sortByRange = (e) =>{
         const name = e.target.name;
@@ -45,14 +46,15 @@ const payloadObj = {name,value}
         type="radio"
         value="lowtohigh"
         name="category"
-        onChange={(e) => filterDataonSort(e)}
+        onChange={filterDataonSort}
+        checked = {sort?.length>0 && sort==="lowtohigh"?true:false}
       />  Sort(lowtohigh)
       <input
         type="radio"
         name="category"
         value="hightolow"
-    
-        onChange={(e) =>filterDataonSort(e)}
+        checked = {sort?.length>0 && sort==="hightolow"?true:false}
+        onChange={filterDataonSort}
       />
       Sort(hightolow)
     <h3>Sort By Range</h3>
@@ -71,6 +73,8 @@ const payloadObj = {name,value}
     
         value="all"
         onChange= {showAllProducts}
+        checked = {all}
+       
       />
      All
 
@@ -80,7 +84,8 @@ const payloadObj = {name,value}
         name = "gender"
     
         value="men"
-        onChange={(e) => filterDataonCategory(e)}
+        onChange={filterDataonCategory}
+        checked = {categoryInput?.length>0 && categoryInput==="men"?true:false}
       />
 
       Men's Section
@@ -90,7 +95,8 @@ const payloadObj = {name,value}
         name = "gender"
     
         value="women"
-        onChange={(e) => filterDataonCategory(e)}
+         onChange={filterDataonCategory}
+        checked = {categoryInput?.length>0 && categoryInput==="women"?true:false}
       />
       Women's Section
     
@@ -99,7 +105,8 @@ const payloadObj = {name,value}
         name = "gender"
     
         value="kids"
-        onChange={(e) => filterDataonCategory(e)}
+        onChange={filterDataonCategory}
+        checked = {categoryInput?.length>0 && categoryInput==="kids"?true:false}
       />
       kid's Section
 
@@ -112,18 +119,21 @@ const payloadObj = {name,value}
         value="sports"
         name = "sports"
         onChange={(e) => filterDataonCheck(e)}
+        checked ={genre?.includes("sports")?true:false}
       />
       Sport's Wear
       <input
         type="checkbox"
         value="formal"
         onChange={(e) => filterDataonCheck(e)}
+        checked ={genre?.includes("formal")?true:false}
       />
    Formal Wear
      <input
         type="checkbox"
         value="casual"
         onChange={(e) => filterDataonCheck(e)}
+        checked ={genre?.includes("casual")?true:false}
       />
  Casual Wear  
     

@@ -10,7 +10,7 @@ const[isloading,setIsLoading] = useState(false)
 const[error,setError] = useState(false)
 
 const [state, dispatch] = useReducer(ProductsReducer, initialState);
-  
+   
 // 1.get products from db
    const getData = async()=>{
     try{
@@ -68,9 +68,10 @@ const filteredDataOnPrice =  state?.price > 300 ?filteredDataOnInput.filter((pro
 :filteredDataOnInput
 
 // console.log(state.allFlag)
-const filteredData = state?.genre.length>0 ?
+const filteredDataForGenre = state?.genre.length>0 ?
 filteredDataOnPrice.filter((product) => state?.genre.includes(product.genre)):
 filteredDataOnPrice
+const filteredData = state?.all? state?.products:filteredDataForGenre
 
    const ValuesToBePassed = {state,isloading, dispatch,getProductByID,getData,filteredData}
    return <ProductsProviderkey.Provider value = {ValuesToBePassed}>{children}</ProductsProviderkey.Provider>

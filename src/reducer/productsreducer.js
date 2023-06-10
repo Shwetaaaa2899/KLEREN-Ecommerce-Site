@@ -31,24 +31,17 @@ switch(action.type){
             case "RANGE":
               
              const { name,value} = action.payload
-             console.log("reducer range",name,value)
-             console.log(state)
+            //  console.log("reducer range",name,value)
+            //  console.log(state)
 
               return {...state,[name]:Number(value)}
               case "DISPLAY-ALL-PRODUCTS":
-                console.log("2st step")
-                console.log(state.allFlag,"before check")
+               //  console.log("2st step")
+               //  console.log(state.allFlag,"before check")
                 return    {
                   
                   ...state,
-                     sort: "",
-                     search: "",
-                     categoryInput:"",
-         
-                     genre:[],
-                      maximum:0,
-                      minimum:0,
-                      price:300
+                   all:!state.all
                      }
                 // return {...state,allFlag : !state.allFlag}
              case "CLEAR-FILTER":
@@ -56,7 +49,14 @@ switch(action.type){
              return    {
                   
                  ...state,
-                    filter:state.filter + 1
+                 genre:[],
+                 maximumPrice:0,
+                 minimumPrice:0,
+                 price:300,
+                 sort: "",
+                 search: "",
+                 categoryInput:"",
+                 all:false
                     }
      default:
                 return state
@@ -69,7 +69,7 @@ switch(action.type){
 
 export const initialState = {islaoding:true,
     products :[],
-    backup:[],
+
  
    ProductToBeDetailed:{},
  
@@ -80,7 +80,7 @@ export const initialState = {islaoding:true,
     sort: "",
     search: "",
     categoryInput:"",
-    filter:0
+    all:false
    
     }
 export default ProductsReducer;
