@@ -62,11 +62,11 @@ const handlewishlistCheck = (product) =>  {
 
 }
    const addProductToWishList = async(product) =>{
-  if(!handlewishlistCheck(product)){
+ 
     try{
-        console.log("recived item for wshl is",product,token)
+        // console.log("recived item for wshl is",product,token)
                 const passobj = {product}
-                console.log("PASSOBJ IS ",JSON.stringify(passobj))
+                // console.log("PASSOBJ IS ",JSON.stringify(passobj))
                 const sendreq =await fetch("/api/user/wishlist",{
                     method:"POST",
                     headers:{'Accept':'application/json',
@@ -83,27 +83,22 @@ const handlewishlistCheck = (product) =>  {
 console.log(e)
                 toast.error("Unable to add to wishlist!");
             }
-        
-        }
-
-    
-
-  
-  else{
 
 
-    // console.log("remove case in context called")
-    dispatch({type:"REMOVE-FROM-WISHLIST",payload:product._id})
-  }
+//     console.log("remove case in context called")
+//     removeProductToWishList(product)
+//    
+
 }
  
 
 const removeProductToWishList = async(product) =>{
   
       try{
-          console.log("recived item for wshl is",product,token)
+        //   console.log("recived item for wshl is",product._id,token)
                   const passobj = {product}
-                  const sendreq =await fetch(`/api/user/${product._id}`,{
+                  console.log(passobj)
+                  const sendreq =await fetch(`/api/user/wishlist/${product._id}`,{
                       method:"DELETE",
                       headers:{'Accept':'application/json',
                   'Content-Type':'application/json',
@@ -111,21 +106,25 @@ const removeProductToWishList = async(product) =>{
             
                   })
              
-              
+                //   console.log("received data  after removing data from wishlost",sendreq)
+
                   const response = await sendreq.json();
-                  console.log("received data  after removing data from wishlost",response)
+                //   console.log("received data  after removing data from wishlost",response)
+
                 // setWishList(wishlist)
-                // dispatch({type: "REMOVE-FROM-WISHLIST",payload:{product,wishlist:response.wishlist}})
+                dispatch({type: "REMOVE-FROM-WISHLIST",payload:{product,wishlist:response.wishlist}})
                
               }
-              catch(e){}          
+              catch(e){
+                console.log(e)
+              }          
 
             }
 
 //condition to add the product
   
 const  wishlistdispatch  = dispatch
-    const valueToBePassed = {value,wishlistdispatch,addProductToWishList,WishListCall,handlewishlistCheck}
+    const valueToBePassed = {value,wishlistdispatch,addProductToWishList,WishListCall,handlewishlistCheck,removeProductToWishList}
 
     return <WishListProviderKey.Provider value={valueToBePassed}>{children}
     </WishListProviderKey.Provider>

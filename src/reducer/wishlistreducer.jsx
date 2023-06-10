@@ -25,8 +25,8 @@ const WIshListReducer  = (value,action) =>{
 
 case "REMOVE-FROM-WISHLIST":
     // console.log("Called for removing from wishlist with prod id",action.payload)
-    return   {...value, wishlist: value.wishlist.filter((wishlistitem) => wishlistitem._id !== action.payload)
-    }
+    return   {...value, wishlist: action.payload.wishlist}
+    
 
 
       default:

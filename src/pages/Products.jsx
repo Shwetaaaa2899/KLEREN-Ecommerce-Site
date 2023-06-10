@@ -9,24 +9,27 @@ import {CartState} from "../context/productsContext"
 export default function ShowProducts() {
  
    
-        const { state :{products,filter} ,filteredData} = CartState()
-        // useEffect(()=>{
-        //     <Filter />
-        // },[filter])
-        console.log(filter)
+        const { state :{products,filter} ,isloading,filteredData} = CartState()
+      
+        console.log(isloading)
+        
      
-// console.log("received from reducer",products)
-    
     return <>
-    <Filter  key = {filter}/>
+    {
+        isloading?(<h1>Laoding......</h1>):<><Filter  key = {filter}/>
     
 
-    {
-        filteredData?.map((product) =>  
+    
+    { filteredData?.map((product) =>  
 
-        <Product key={product._id} product = {product} />
-       )
+     <Product key={product._id} product = {product} />
+    )}
+ </>
     }
+    
+
+    
+    
    
     </>
 }

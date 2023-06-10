@@ -6,18 +6,27 @@ export const ProductsProviderkey = createContext()
 
  const ProductsProvider = ({children}) =>{
 
-
+const[isloading,setIsLoading] = useState(false)
+const[error,setError] = useState(false)
 
 const [state, dispatch] = useReducer(ProductsReducer, initialState);
   
 // 1.get products from db
    const getData = async()=>{
     try{
+      setIsLoading(true)
          fetch("/api/products").then((resp) => resp.json().then((finalAns) => dispatch({type:"DISPLAY-PRODUCTS",payload:finalAns.products})))
 		}
        
-      catch(e){}  
+      catch(e){
+        setError(true);
+
+      }  
+      finally{
+        setIsLoading(false)
+      }
     }
+   
     useEffect(()=>{getData()},[])
 
 
@@ -63,7 +72,7 @@ const filteredData = state?.genre.length>0 ?
 filteredDataOnPrice.filter((product) => state?.genre.includes(product.genre)):
 filteredDataOnPrice
 
-   const ValuesToBePassed = {state, dispatch,getProductByID,getData,filteredData}
+   const ValuesToBePassed = {state,isloading, dispatch,getProductByID,getData,filteredData}
    return <ProductsProviderkey.Provider value = {ValuesToBePassed}>{children}</ProductsProviderkey.Provider>
 }
 
