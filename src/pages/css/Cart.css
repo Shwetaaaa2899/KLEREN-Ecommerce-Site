@@ -1,0 +1,86 @@
+
+body{
+
+  text-decoration: none;
+  color:black;
+  padding: 0;
+  margin:0
+}
+.cart-container{
+    display: flex;
+    gap:5rem;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    top:0;
+    /* position: relative; */
+}
+
+.cart-container .card-payment-container{
+   display: flex;
+   flex-direction: column;
+   padding: 15px;
+
+   width: 300px;
+   height: 450px;
+color:black;
+text-decoration: none;
+   border:none;
+   justify-content: space-between;
+
+   box-shadow: 4px 3px 8px 1px #969696;  
+}
+.card-payment-container p{
+  padding: 15px;
+  
+
+  
+}
+
+
+.cart-container .card-payment-container button{
+
+    /* margin-left:2%; */
+    padding:0.5rem;
+    border-radius:10%;
+    color: #FFFFFF;
+    background-color: #8AAAE5;
+    font-size: 15px;
+  }
+  .cart-container .card-payment-container button:hover{
+    cursor: pointer;
+    background-color: whitesmoke;
+    color:brown
+  }
+
+.header{
+    padding: 5rem;
+    /* font-size: 12rem; */
+    font-weight: 20px;
+    position: absolute;
+    top:10;
+    left:50%;
+}
+
+.botom-section{
+    display: flex;
+    justify-content: space-around;
+    column-gap: 5%;
+    top:0 ;
+}
+.botom-section .wishlist-wrapper{
+  flex:70%;
+  margin:5rem;
+}
+.botom-section .card-payment-container{
+    flex:30%;
+    margin-right:5rem;
+  }
+
+  .price-card-header{
+
+    padding: 5px;
+    background-color:#969696;
+    font-size: medium;
+  }
+  

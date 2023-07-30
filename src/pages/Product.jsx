@@ -5,7 +5,7 @@ import { CartListState } from "../context/CartContext"
 import "./css/productCard.css"
 import { useEffect } from "react";
 import { AuthContext} from "../context/authcontext"
-import { useNavigate } from "react-router-dom";
+import { useNavigate , Link } from "react-router-dom";
 import { AiFillHeart } from "react-icons/ai";
 import { WishListState } from "../context/WishlistContext"
 import { toast } from "react-toastify";
@@ -29,22 +29,12 @@ else if(handlewishlistCheck(product)){
    removeProductToWishList(product)
 }
 else{
-   console.log("I am in adding prod case with token")
+   // console.log("I am in adding prod case with token")
  
    addProductToWishList(product)
  
 }
 }
-   // wishlistdispatch({type: "COLOR",payload:product})
-//    {token?<> handlewishlistCheck(product)?console.log("already present"):console.log("need to get added") </>
-// :toast("Please login to add your fav products")
-//    }
-   // handlewishlistCheck(product)?removeProductToWishList(product):addProductToWishList(product)
- 
-
- 
-
-// useEffect(()=>{  setColor(handlewishlistCheck(product))},[colors])
 const CartListHandler = (product) =>{
 
    addProductToCart(product)
@@ -53,45 +43,82 @@ const CartListHandler = (product) =>{
 
 
 
-   return    <div  class="main">    
-
-
-    {/* card logic starts */}
-
-    <div class="card">
-
-    <div  style = {{color: handlewishlistCheck(product)?"red":"black"}}  className="menu" onClick={() => WishListHandler(product)}> 
-<AiFillHeart   />
-     </div>
-<div class="image">
-   <img src={product.image} />
+   return   <div   className="card">
+<Link to = {`/products/${product._id}`}> 
+<div className = "card-img">
+<img  src={product.image} />
 </div>
-<div class="title">
- <h1>
- {product.title}</h1>
-</div>
-<div class="des">
-<label>Price:</label>{product.price}
- <button  style = {{textDecoration:"none" , color:"white" ,border:"none"}} >
+<div className = "card-info">
+<h3 className = "card-title">{product.title}</h3>
+<small>{ 
+   product.genre ==="men"?"Men's Wear"
+   :product.genre ==="women"?"WoMen's Wear"
+   :product.genre === "sports"?"Sports Wear"
+   : product.genre ==="casual"?"Casual Wear"
+   :
+   "Kid's Wear"
+}</small>
 
-<NavLink   className = "navlink-btn"  to = {`/products/${product._id}`} >Show in Detail</NavLink>
-                 
-        
-</button>
-<div>
-<button   onClick = {()=> CartListHandler(product)} >
+<div className="price-details">
+<p>Price:₹ {product.price}</p>
+
+<p><span   className = "mrp" >MRP :₹ 
+{product.price+1000} 
+</span> (50% off)</p>
+</div>
+</div>
+
+
+
+
+
+ </Link>
+
+  <div  className = "icons-section">
+ {/* style = {{color: handlewishlistCheck(product)?"red":"black"}}   */}
+ <button  
+  onClick={() => WishListHandler(product)}> 
+  
+  {
+   handlewishlistCheck(product)?"Remove From WishList"
+   :
+   
+   "Add to WishList"
+  }
+
+  </button>
+
+
+  <button  onClick = {()=> CartListHandler(product)} >
 {
-   handlecartlistCheck(product)?"Remove From Cart":"Add to Cart"
+   handlecartlistCheck(product)?"Remove From Cart"
+   :"Add to Cart"
 }
 
 
-</button>
+</button> 
 
-</div>
 
-</div> 
-{/* //des div ends */}
-</div>
+     </div>
+
+ {/* <h1 className = "card-title">{product.title}</h1> */}
+{/*  */}
+
+{/* <label className = "card-title">Price:</label>{product.price} */}
+
+
+{/* 
+ <button className = "card-btn"  style = {{textDecoration:"none" , color:"white" ,border:"none"}} >
+
+<NavLink   className = "nav"   to = {`/products/${product._id}`} >Show in Detail</NavLink>
+                 
+        
+</button> */}
+
+{/* */}
+
+
+
 
 
 
@@ -99,6 +126,8 @@ const CartListHandler = (product) =>{
        
 
 </div>
+
+
 
    
 }

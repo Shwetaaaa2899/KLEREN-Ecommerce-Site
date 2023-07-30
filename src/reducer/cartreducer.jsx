@@ -35,6 +35,8 @@ case "DECREASE-QUANTITY":
 
     case "GET-TOTAL-PRICE":
         return {...value,totalprice:action.payload}
+        case "EMPTY-CART":
+            return {...value,cart:[]}
       default:
         return value
     }

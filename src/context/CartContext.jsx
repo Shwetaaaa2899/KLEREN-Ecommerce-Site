@@ -109,6 +109,7 @@ const RemoveProductFromcart = async(product) =>{
 
   
 const AddProductQuantIncart = async({product,type}) =>{
+    console.log(product,"api")
     
     try{
     
@@ -121,10 +122,12 @@ const AddProductQuantIncart = async({product,type}) =>{
     body:JSON.stringify(requestedbody)
       
         })
+        console.log("received data  after qant + from cart",sendreq)
+      
         // .then((data) =>  data. json())
         //an array inside  one product is present
         const response = await sendreq.json();
-        // console.log("received data  after qant + from cart",response)
+        console.log("received data  after qant + from cart",response)
       
         dispatch({type:"INCREASE-QUANTITY",payload:response?.cart})
       
@@ -152,7 +155,9 @@ dispatch({type:"GET-TOTAL-PRICE",payload:total})
 }
 
 const  cartdispatch  = dispatch
-    const valueToBePassed = {state,cartdispatch,addProductToCart,RemoveProductFromcart,cartListCall,handlecartlistCheck,AddProductQuantIncart,
+    const valueToBePassed = {state,cartdispatch,addProductToCart,
+        RemoveProductFromcart,
+        cartListCall,handlecartlistCheck,AddProductQuantIncart,
         RemoveProductQuantIncart,IsQuantityGreaterThanOne
     ,CheckForPaymentHandler}
 

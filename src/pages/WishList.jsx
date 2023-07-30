@@ -3,7 +3,9 @@ import { useState,useEffect } from "react"
 import { useNavigate } from "react-router-dom";
 import { AiFillHeart } from "react-icons/ai";
 import { CartListState } from "../context/CartContext"
-
+// import "./css/MainContainer.css"
+import "./css/WishList.css"
+import Product  from "./Product"
 export default function WishList() {
     const navigate = useNavigate()
 
@@ -19,9 +21,22 @@ export default function WishList() {
  }
  
    
-    return <div>
+    return   <div className="wishlist-wrapper">
 {
-wishlist.length>0?wishlist?.map((product) => <div  class="main">    
+wishlist.length>0?wishlist?.map((product) => <Product key={product._id} product = {product} />)
+
+        :
+       <div> <h3>No data in wishlist as of now</h3>
+        <button   className= "button" onClick = {() => navigate("/products") } >Let's Explore</button>
+        </div>
+        
+
+
+}
+    
+    </div>
+}
+{/* <div  class="main">    
     <div class="card">
 <div  style = {{ color : handlewishlistCheck(product)?"red":"grey"}} className="menu" onClick={() =>   addProductToWishList(product)}> 
 <AiFillHeart  />
@@ -45,15 +60,4 @@ wishlist.length>0?wishlist?.map((product) => <div  class="main">
 </button>
         </div>
         </div>
-        </div>)
-        :
-       <div> <h3>No data in wishlist as of now</h3>
-        <button onClick = {() => navigate("/products") } >Let's Explore</button>
-        </div>
-        
-
-
-}
-    
-    </div>
-}
+        </div>) */}

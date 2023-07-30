@@ -1,3 +1,4 @@
+
 const ProductsReducer  = (state,action) =>{
    
 
@@ -37,7 +38,8 @@ switch(action.type){
               return {...state,[name]:Number(value)}
               case "DISPLAY-ALL-PRODUCTS":
                //  console.log("2st step")
-               //  console.log(state.allFlag,"before check")
+                console.log(!state.all,"before check")
+
                 return    {
                   
                   ...state,

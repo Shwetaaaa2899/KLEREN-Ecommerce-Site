@@ -5,31 +5,48 @@ import { useContext} from "react"
 import {useState,useEffect} from "react"
 import Filter from "../components/Filter"
 import Product  from "./Product"
+import "./css/MainContainer.css"
 import {CartState} from "../context/productsContext"
 export default function ShowProducts() {
  
    
         const { state :{products,filter} ,isloading,filteredData} = CartState()
       
-        console.log(isloading)
+        // console.log(isloading)
         
      
-    return <>
-    {
-        isloading?(<h1>Laoding......</h1>):<><Filter  key = {filter}/>
+    return <div className="container-wrapper">
+    <div className="left-container" >
+    <Filter key = {filter} className = "filter"  />
     
+    </div>
+    <div className="right-container" >
+    <div className = "cards-parent-container" >
+{ filteredData?.map((product) =>  
 
+<Product key={product._id} product = {product} />
+)}
+</div>
+</div>
+    {/* {
+        isloading?(<h1>Laoding......</h1>):
+        <div className = "mainFrame">
+        <Filter key = {filter} className = "filter"  />
     
-    { filteredData?.map((product) =>  
+<div className = "cards-parent-container" >
+{ filteredData?.map((product) =>  
 
-     <Product key={product._id} product = {product} />
-    )}
- </>
+<Product key={product._id} product = {product} />
+)}
+</div>
+    
+   
+ </div>
     }
     
 
     
     
-   
-    </>
+    */}
+    </div>
 }

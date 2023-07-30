@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    /* margin-top:500px; */
+
+}
+.container-wrapper {
+
+    display: flex;
+    gap: 10%;
+    height: 100vh;
+    width: 100%;
+    margin: 0 auto;
+
+}
+.left-container {
+    flex: 20%;
+    margin-top: 100px;
+}
+.right-container {
+    flex: 80%;
+    margin-top: 100px;
+    /* background-color: aqua; */
+
+}

@@ -1,4 +1,4 @@
-import "./App.css";
+// import "./App.css";
 import logo from "./logo.png";
 import { Routes,Route , NavLink} from "react-router-dom"
 import ShowProducts from "./pages/Products";
@@ -9,13 +9,13 @@ import Header from "./components/Header"
 import Filters from "./components/Filter"
 import Mockman from "mockman-js";
 import Navbar from "./components/Header"
-import Auth from "./pages/Auth"
+import Login from "./pages/Login"
 import SignUp from "./pages/SignUp"
 import ProductDetail from "./pages/ProductDetail"
 import Logout from "./pages/Logout"
-import PaymentDetail from './pages/PaymentDetail'
+import CheckOut from './pages/Chekout'
 import  {RequiresAuth } from "./components/RequiresAuth"
-import USerProfile from "./pages/USerProfile"
+// import USerProfile from "./pages/USerProfile"
 import Profile from "./pages/Profile"
 
 import Address from "./pages/Address"
@@ -40,16 +40,16 @@ function App() {
         <Route path = "/" element={<Home />} />
         <Route path = "/products" element={<ShowProducts />} />
         <Route path = "/cart" element={<RequiresAuth><Cart /></RequiresAuth>} />
-      
+        <Route path = "/profile" element = {<RequiresAuth><Profile/></RequiresAuth>} />
+        
         <Route path = "/wishlist" element={<RequiresAuth><WishList /></RequiresAuth>} />
         <Route path = "/mockman" element={ < Mockman />} />
-        <Route path = "/auth" element={ < Auth />} />
+        <Route path = "/auth" element={ < Login />} />
         <Route path = "/signup" element={ < SignUp />} />
         <Route path="/products/:productID" element={<ProductDetail />} />
         <Route path = "/logout" element = { <Logout/>} />
-        <Route path = "/checkout" element = {<PaymentDetail/>} />
-        <Route path = "/profile" element = {<RequiresAuth><Profile/></RequiresAuth>} />
-        
+        <Route path = "/checkout" element = {<CheckOut/>} />
+     
         {/* <Route path = "/profile/" element = {<USerProfile/>} /> */}
    
         <Route path = "/profile/address" element = {<Address/>} />

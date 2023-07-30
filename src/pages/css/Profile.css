@@ -1,0 +1,41 @@
+body{
+    margin:0;
+    padding:0;
+    text-decoration: none;
+}
+.user-profile{
+    display: flex;
+    /* justify-content:center;
+    align-items: center; */
+    height:35vh;
+    margin-top:100px;
+    /* flex-direction: column; */
+
+ 
+
+}
+.user-profile .image img{
+    width:300px;
+    height:300px
+
+}
+.details {
+    display: flex;
+    flex-direction: column;
+    gap:10%;
+    font-size: 1rem;
+}
+.profile{
+    margin:50px;
+    /* justify-content: center; */
+    box-shadow: 4px 3px 8px 1px #969696;
+    width:60%;
+    height:65vh;
+    display: flex;
+    gap:5rem;
+flex-direction: column;
+}
+ .header{
+    padding:0.5rem;
+    /* font-size: larger; */
+}
