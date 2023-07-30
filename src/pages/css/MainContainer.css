@@ -16,12 +16,12 @@
 
 }
 .left-container {
-    flex: 20%;
-    margin-top: 100px;
+    flex-basis: 20%;
+    margin-top: 30px;
 }
 .right-container {
     flex: 80%;
-    margin-top: 100px;
+    margin-top: 30px;
     /* background-color: aqua; */
 
 }

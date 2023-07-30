@@ -80,3 +80,19 @@ body{
     font-size: 12px;
 
 }
+
+.left-section button{
+    padding:0.5rem;
+  border-radius:10%;
+  color: #FFFFFF;
+  background-color: #8AAAE5;
+  font-size: 15px;
+  width:100px;
+  top:0;
+
+}
+.left-section button:hover{
+    cursor: pointer;
+    background-color: whitesmoke;
+    color:brown
+  }
