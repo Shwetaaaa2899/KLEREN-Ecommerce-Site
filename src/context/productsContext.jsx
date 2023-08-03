@@ -14,39 +14,58 @@ const [state, dispatch] = useReducer(ProductsReducer, initialState);
 // 1.get products from db
    const getData = async()=>{
     try{
-      setIsLoading(true)
-         fetch("/api/products").then((resp) => resp.json().then((finalAns) => dispatch({type:"DISPLAY-PRODUCTS",payload:finalAns.products})))
-		}
+      // dispatch({type:"SET-LOADER",payload:true})
+	
+         fetch("/api/products").then((resp) => resp.json().then((finalAns) =>
+          dispatch({type:"DISPLAY-PRODUCTS",payload:finalAns.products})))
+          // dispatch({type:"SET-LOADER",payload:false})
+        }
        
       catch(e){
         setError(true);
 
       }  
       finally{
-        setIsLoading(false)
+        // dispatch({type:"SET-LOADER",payload:false})
       }
     }
    
-    useEffect(()=>{getData()},[])
+    useEffect(()=>{
+        
+      // dispatch({type:"SET-LOADER",payload:true})
+      getData()
+
+        
+      // dispatch({type:"SET-LOADER",payload:false})
+    },[])
 
 
     // 2.get product based on product id
     const getProductByID = async(id) =>{
         
-    
-        
-            try{
-                fetch(`/api/products/${id}`).then((resp) => resp.json().then((finalAns) => {
+        try{
+             
+          dispatch({type:"SET-LOADER",payload:true})
+         
+          dispatch({type:"CLEAR-PRODUCT-IN-DETAIL"})
+      
+          fetch(`/api/products/${id}`).then
+                ((resp) => resp.json().
+                then((finalAns) => {
                 
                     dispatch({type:"PRODUCT-IN-DETAIL",payload:finalAns.product})
-                }
+                    dispatch({type:"SET-LOADER",payload:false})
+              }
                 )
                 
                     
                     )
                }
               
-             catch(e){}  
+             catch(e){} 
+             finally{
+              // dispatch({type:"SET-LOADER",payload:false})
+            } 
            }
     
            

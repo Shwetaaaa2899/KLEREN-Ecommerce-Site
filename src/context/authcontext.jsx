@@ -1,17 +1,21 @@
 import { useState ,useEffect, createContext, useContext,useReducer } from "react"
+import { FaLaptopHouse } from "react-icons/fa"
 import { useLocation ,useNavigate} from "react-router-dom"
 import { toast } from 'react-toastify'
- const AuthProviderkey = createContext()
+import {UserInfoReducer,initialState} from "../reducer/userreducer"
+const AuthProviderkey = createContext()
 
 
 
  const AuthProvider = ({children}) =>{
    
+    const [state, dispatch] = useReducer(UserInfoReducer, initialState);
+   
     const location = useLocation();
 
    //to store token data 
     const[token,setToken] = useState("");
-    const [userState,setUserState] = useState({login:false})
+    const [userState,setUserState] = useState(null)
     const[isLoggedIn,setIsLoggedIn] = useState(false)
    
   
@@ -41,26 +45,36 @@ console.log(email,password)
         body:JSON.stringify(passobj)
     })
     console.log("response is ",sendreq,sendreq.status)
-    if(sendreq.status === 201){
+    if(sendreq.status === 201 ||  sendreq.status === 200 ){
     const { createdUser, encodedToken } = await sendreq.json();
-    // console.log("received token from server fr signup",createdUser,encodedToken)
+    console.log("received token from server fr signup",createdUser,encodedToken)
    
         localStorage.setItem(
           "loginDetails",
           JSON.stringify({ user: createdUser, token: encodedToken })
         );
         // to get the data from localstorage
-        const localStorageResponse = localStorage.getItem("loginDetails") //shows data in string format
-        const localstorgaedataparsed = JSON.parse(localStorageResponse)
-        console.log("Parsed ls val is",localstorgaedataparsed)// got data back in objectt form
-        const {user, token } = JSON.parse(localStorageResponse)
-        console.log("My token is",token)
+        // const localStorageResponse = localStorage.getItem("loginDetails") //shows data in string format
+        // const localstorgaedataparsed = JSON.parse(localStorageResponse)
+        // console.log("Parsed ls val is",localstorgaedataparsed)// got data back in objectt form
+        // const {user, token } = JSON.parse(localStorageResponse)
+        // console.log("My token is",token)
+
         // storing these values of localstorage in the hook
-        setToken(token)
+        // setToken(token)
         // setUserInfo(user)
-           
+   
+        // setUserInfo(createdUser)
+
+        // new logic
+        dispatch({type:"SET-TOKEN",payload:encodedToken})
+        dispatch({type:"SET-PROFILE",payload:createdUser})
+
         toast("Signed Up succesfully.Please login to continue")
+      
+      
         navigate("/auth");
+
         // navigate("/products");
         // setUserState({...userState,login:true})
         }
@@ -110,7 +124,9 @@ const loginHandler = async({email ,password}) =>{
     'Content-Type':'application/json'},
         body:JSON.stringify(passobj)
     })
-   if(sendreq.status === 200){
+   if(sendreq.status === 200
+    ||
+    sendreq.status === 201){
 
    
     const { foundUser, encodedToken } = await sendreq.json();
@@ -122,19 +138,22 @@ const loginHandler = async({email ,password}) =>{
         );
         // to get the data from localstorage
         
-        const localStorageResponse = localStorage.getItem("loginDetails") //shows data in string format
-        const localstorgaedataparsed = JSON.parse(localStorageResponse)
-        console.log("Parsed ls val is",localstorgaedataparsed)// got data back in object form
-        const {user, token } = JSON.parse(localStorageResponse)
-        setToken(token)
-        setUserInfo(user)
-        toggelSignInHandler()
-
-   
+        // const localStorageResponse = localStorage.getItem("loginDetails") //shows data in string format
+        // const localstorgaedataparsed = JSON.parse(localStorageResponse)
+        // console.log("Parsed ls val is",localstorgaedataparsed)// got data back in object form
+        // const {user, token } = JSON.parse(localStorageResponse)
+        // console.log(user)
+        // setToken(token)
+        // setUserInfo(user)
+        // toggelSignInHandler()
+        dispatch({type:"SET-TOKEN",payload:encodedToken})
+        dispatch({type:"SET-PROFILE",payload:foundUser})
+console.log("l is",location)
+        navigate(location?.state?.from?.pathname || "/products")
+    
         toast("Logged In succesfully")
       
-       token && navigate(location?.state?.from?.pathname || "/products")
-        }
+       }
         else{
             toast("Your password or email address is incorrect")
             console.log(sendreq.status)
@@ -153,8 +172,8 @@ const logoutHandler = () =>{
     setToken(null)
     setUserInfo(null)
     localStorage.removeItem("loginDetails");
-
-    toggelSignInHandler()
+    setIsLoggedIn(false)
+    // toggelSignInHandler()
     toast("Logged out successfully!")
     navigate("/")
 
@@ -166,7 +185,9 @@ const toggelSignInHandler = () =>{
 }
 
 
-const ValuesToBePassed = {isLoggedIn,toggelSignInHandler, userState,setUserState,signUpHandler,loginHandler,token,userInfo,logoutHandler}
+const ValuesToBePassed = {
+    state, dispatch,
+    isLoggedIn,toggelSignInHandler, userState,setUserState,signUpHandler,loginHandler,token,userInfo,logoutHandler}
    return <AuthProviderkey.Provider value = {ValuesToBePassed} >{children}</AuthProviderkey.Provider>
 
  }

@@ -28,6 +28,7 @@ case "REMOVE-FROM-CART":
     return {...value,cart:action.payload}
   case "INCREASE-QUANTITY":
     
+    
 return {...value,cart:action.payload}
 case "DECREASE-QUANTITY":
     return {...value,cart:action.payload}

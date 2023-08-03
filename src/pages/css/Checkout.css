@@ -60,9 +60,12 @@ body{
     flex-direction: column;
     gap:2rem;
     flex-wrap: wrap;
-    
+    position: fixed;
     /* align-self: flex-end; */
-    margin-right:50px
+    /* align-self: flex-end; */
+    margin-right:50px;
+    right:0;
+    /* top:0; */
  
 }
 .child{
@@ -78,7 +81,11 @@ body{
     padding:0.5rem;
     text-align: left;
     font-size: 12px;
+    flex-wrap: wrap;
 
+}
+.address-deatils button:hover{
+    cursor: pointer;
 }
 
 .left-section button{

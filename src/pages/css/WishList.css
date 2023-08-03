@@ -28,7 +28,8 @@
     border-radius:10%;
     color: #FFFFFF;
     background-color: #8AAAE5;
-    font-size: 15px;
+    font-size: 12px;
+    margin:1rem
   }
   .button:hover{
     cursor: pointer;

@@ -2,18 +2,18 @@ import { useState , createContext, useContext,useReducer } from "react"
 import cartReducer,{initialState} from "../reducer/cartreducer"
 import { useEffect } from "react"
 import { AuthContext} from "./authcontext"
-   
+import { toast } from 'react-toastify';
 export const CartListProviderKey = createContext()
 
 
  const CartListProvider = ({children}) =>{
 
     const [state,dispatch] = useReducer(cartReducer,initialState)
-const { token} = AuthContext()
+const { state:{token}} = AuthContext()
 
 //  api call to get the cart data
 
-
+console.log(token)
 const cartListCall = async() =>{
 
    
@@ -53,6 +53,7 @@ const handlecartlistCheck = (product) =>  {
 }
    const addProductToCart = async(product) =>{
     const products = product
+
   if(!handlecartlistCheck(product)){
     try{
         
@@ -66,11 +67,16 @@ const handlecartlistCheck = (product) =>  {
                 body:JSON.stringify(passobj)
                 })
               
-                const response = await sendreq.json();
-                // console.log("received data  fr adding data in cart",response)
-              
-              dispatch({type:"ADD-TO-CART",payload:{product,cart:response.cart}})
+               
+    if(sendreq.status === 200 || sendreq.status === 201){
+        const response = await sendreq.json();
+          
+        dispatch({type:"ADD-TO-CART",payload:{product,cart:response.cart}})
+        toast("Product added in cart")
+    } 
              
+
+      
             }
             catch{}
         
@@ -83,7 +89,7 @@ const handlecartlistCheck = (product) =>  {
   }
 } 
 const RemoveProductFromcart = async(product) =>{
-    console.log("data to remove is",product._id,product)
+ 
     try{
     
         const sendreq =await fetch(`/api/user/cart/${product._id}`,{
@@ -94,12 +100,18 @@ const RemoveProductFromcart = async(product) =>{
       
         })
       
+      
+    if(sendreq.status === 200 || sendreq.status === 201){
+        
         const response = await sendreq.json();
-        // console.log("received data  after deleting from cart",response)
+            dispatch({type:"REMOVE-FROM-CART",payload:response?.cart})
+             
       
-        dispatch({type:"REMOVE-FROM-CART",payload:response?.cart})
-      
+        toast("Product removed from cart")
+        }
+     
 
+          
     }
     catch(e){}
 }
@@ -109,7 +121,7 @@ const RemoveProductFromcart = async(product) =>{
 
   
 const AddProductQuantIncart = async({product,type}) =>{
-    console.log(product,"api")
+    console.log(product,"api",type, token)
     
     try{
     
@@ -123,15 +135,17 @@ const AddProductQuantIncart = async({product,type}) =>{
       
         })
         console.log("received data  after qant + from cart",sendreq)
-      
-        // .then((data) =>  data. json())
-        //an array inside  one product is present
+      if(sendreq.status === 200 || sendreq.status === 201){
         const response = await sendreq.json();
         console.log("received data  after qant + from cart",response)
       
         dispatch({type:"INCREASE-QUANTITY",payload:response?.cart})
       
 
+      }
+        // .then((data) =>  data. json())
+        //an array inside  one product is present
+      
     }
     catch(e){
 
@@ -139,13 +153,39 @@ const AddProductQuantIncart = async({product,type}) =>{
 }
 
 //remove quantity for product based on id
-const RemoveProductQuantIncart = ({product,type}) =>{
-  const filtered =  state?.cart.includes(product) &&
-  state?.cart.map((prod)  => prod._id ===product._id ? {...prod,qty:prod.qty -1}:prod)
+const RemoveProductQuantIncart = async({product,type}) =>{
+//   const filtered =  state?.cart.includes(product) &&
+//   state?.cart.map((prod)  => prod._id ===product._id ? {...prod,qty:prod.qty -1}:prod)
  
-  
+try{
+    
+    const requestedbody  = {action:{type}}
+      const sendreq =await fetch(`/api/user/cart/${product._id}`,{
+          method:"POST",
+          headers:{'Accept':'application/json',
+      'Content-Type':'application/json',
+      authorization : token},
+  body:JSON.stringify(requestedbody)
+    
+      })
+      console.log("received data  after qant - from cart",sendreq)
+    if(sendreq.status === 200 || sendreq.status === 201){
+      const response = await sendreq.json();
+      console.log("received data  after qant - from cart",response)
+    
+      dispatch({type:"DECREASE-QUANTITY",payload:response?.cart})
+    
 
-       dispatch({type:"DECREASE-QUANTITY",payload:filtered})
+    }
+      // .then((data) =>  data. json())
+      //an array inside  one product is present
+    
+  }
+  catch(e){
+
+  }
+
+//       dispatch({type:"DECREASE-QUANTITY",payload:filtered})
       
 }
 //function to checkout for payment

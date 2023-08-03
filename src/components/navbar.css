@@ -73,7 +73,9 @@ nav{   position:fixed;
    justify-content: space-between;
    list-style-type: none;
  }
- 
+ .nav-elements ul li:hover{
+  cursor: pointer;
+ }
  .nav-elements ul li:not(:last-child) {
    margin-right: 60px;
  }

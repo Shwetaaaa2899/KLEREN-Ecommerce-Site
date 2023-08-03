@@ -2,6 +2,9 @@ import { AuthContext } from "../context/authcontext"
 import { useNavigate ,NavLink,useLocation} from "react-router-dom"
 import { toast } from "react-toastify"
 import { useState} from "react"
+import { AiOutlineEyeInvisible } from "react-icons/ai";
+import { AiOutlineEye } from "react-icons/ai";
+
 import "./css/Form.css"
 export default function Login() {
   //  const location = useLocation()
@@ -9,17 +12,13 @@ export default function Login() {
 // const [userLoginInfo,setUserLoginInfo] = useState({email:"",password:""})
     // const { isLoggedIn,loginHandler,toggelSignInHandler,token } = AuthContext()
     // console.log(isLoggedIn,"pre setting true")
-  const  userGuestData = {email : "adarshbalika@gmail.com",password:"adarshbalika"} 
-   
-   
-  
 
 
 
   const location = useLocation();
   const navigate = useNavigate();
 
-  const { loginHandler, token, userInfo } = AuthContext();
+  const { loginHandler, state:{token}, userInfo } = AuthContext();
   const [authInfo, setAuthInfo] = useState({ email: "", password: "" });
   const setUserInfoHandler = (e) => {
     setAuthInfo({ ...authInfo, [e.target.name]: e.target.value });
@@ -42,32 +41,8 @@ export default function Login() {
     // loginHandler(GuestModeData);
     // navigate("/products")
   };
-  // const loginDetailSetter= (e) =>{
-      
-    //   setUserLoginInfo({...userLoginInfo,[e.target.name] :e.target.value})
-      //  loginHandler({email,password})
-        // navigate("/products")
-
-// }
-// const loginClickHandler = () =>{
-//   console.log(userLoginInfo.email,"and pass is",userLoginInfo.password)
+  const [passwordVisible, setPasswordVisible] = useState(false);
   
-// }
-// const loginAsGuestHandler = () =>{
-
-
-// loginHandler(userGuestData)
-
-// toast("Logged in as Guest") --messing up with logged in pop up
-
-// navigate("/profile")
-
-// }
-// const preventData = (e) =>{
-//   e.preventDefault()
-//   loginHandler(userLoginInfo)
-// }
-    
 return (
   <div>
     {/* <Header /> */}
@@ -99,15 +74,27 @@ return (
               <label>
                 <p>
                   <h3>Password:</h3>
-
+                  <div className="password-input">
                   <input
                     required
                     value={authInfo?.password}
-                    type="password"
-                    name="password"
                     onChange={setUserInfoHandler}
+                    className="password"
+                    name="password"
+                    type={passwordVisible ? "text" : "password"}
+                  
                     placeholder="Password"
                   />
+                    <span
+                        onClick={() => setPasswordVisible(!passwordVisible)}
+                      >
+                        {passwordVisible ? (
+                          <AiOutlineEye />
+                        ) : (
+                          <AiOutlineEyeInvisible />
+                        )}
+                      </span>
+                      </div>
                 </p>
               </label>
 

@@ -13,7 +13,7 @@ export const WishListProviderKey = createContext()
     
 const navigate = useNavigate()
     const [value,dispatch] = useReducer(WIshListReducer,initialState)
-const { token} = AuthContext()
+const { state:{token}} = AuthContext()
 // console.log("Currently token has",token)
 //  api call
 
@@ -77,7 +77,7 @@ const handlewishlistCheck = (product) =>  {
                 const response = await sendreq.json();
               
               dispatch({type:"ADD-TO-WISHLIST",payload:{product,wishlist:response.wishlist}})
-             
+             toast("Product added in wishlist")
             }
             catch(e){
 console.log(e)
@@ -113,7 +113,8 @@ const removeProductToWishList = async(product) =>{
 
                 // setWishList(wishlist)
                 dispatch({type: "REMOVE-FROM-WISHLIST",payload:{product,wishlist:response.wishlist}})
-               
+                toast("Product removed from wishlist")
+            
               }
               catch(e){
                 console.log(e)

@@ -9,9 +9,10 @@ import { MdOutlineExplore } from "react-icons/md"
 
 
 export default function  Navigation(){
-    const {isLoggedIn ,token,logoutHandler,userInfo} = AuthContext()
+    const {dispatch, state:{token,isLoggedIn},logoutHandler,userInfo} = AuthContext()
 const { state:{cart} } = CartListState()
 const {value: {wishlist} } = WishListState()
+console.log(token,"from auth")
 
 // console.log("userinfo post login is",userInfo,"and login flag is",isLoggedIn)
    return <>
@@ -36,7 +37,7 @@ const {value: {wishlist} } = WishListState()
          
                 <li  >
         
-              {
+              {/* {
                 token && isLoggedIn  ?  <NavLink to = "/profile" > <RiAccountCircleFill  style = {{color:"black",  fontSize :"25px"}}/>
                    
                    </NavLink>
@@ -45,8 +46,10 @@ const {value: {wishlist} } = WishListState()
                    <NavLink to = "/auth" > <RiAccountCircleFill  style = {{color:"black",  fontSize :"25px"}}/>
                    
                    </NavLink>
-              }   
-                  
+              }    */}
+              <NavLink to = "/profile" > <RiAccountCircleFill  style = {{color:"black",  fontSize :"25px"}}/>
+
+         </NavLink>     
                 </li>
                 <li ><NavLink to = "/cart"  >
        <FaShoppingCart style = {{color:"black",  fontSize :"25px"}}/>
@@ -55,7 +58,12 @@ const {value: {wishlist} } = WishListState()
          </li>
 
 
-        { isLoggedIn && token && <li>    <div onClick = {logoutHandler}> <NavLink to = "/logout" className = 'link link-active'>Log out</NavLink></div>
+        {  token && <li>    <div onClick = {()=>dispatch({type:"LOGOUT"})}>
+         {/* <NavLink to = "/" className = 'link link-active'> */}
+        
+        Log out
+        {/* </NavLink> */}
+        </div>
          </li>
         }
         </ul>

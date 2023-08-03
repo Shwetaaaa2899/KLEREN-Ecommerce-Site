@@ -3,7 +3,7 @@ import { AuthContext} from "../context/authcontext"
 import { useLocation } from "react-router-dom"
 
 export const RequiresAuth = ({children}) =>{
-    const {token} = AuthContext()
+    const {state:{token}} = AuthContext()
     const location = useLocation()
 
 return token?children:

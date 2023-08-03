@@ -1,34 +1,156 @@
-body{
+
+.user-profile-container{
+    /* background-color: aqua/; */
+    width:50%;
+    min-height:50vh;
+    flex-wrap: wrap;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    margin-left:25%;
+    flex-direction: column;
+    margin-top:100px;
+
+   
+    box-shadow: 4px 3px 8px 1px #969696;
+   
+}
+
+
+.tab-section div {
+display: inline;
+color:white;
+text-align: center;
+background-color:grey;
+width: 100%; 
+padding:12px;
+
+/* width:50% */
+
+
+}
+.user-profile-container .tab-section {
+    /* width:30%; */
+
+top:0;
+    display: flex;
+ /* justify-content: space-between; */
+}
+
+
+.tab-section  .active-div{
+    background-color: white;
+    color:black
+}
+.tab-section div:hover{
+    cursor: pointer;
+    font-size: larger;
+    font-weight:500;
+}
+
+/* /--div header section logic ends/ */
+
+/* /content section/ */
+
+.tab-section{
+    width: 100%;
+  
+    /* background-color: blue ; */
+    /* padding:2px; */
+
+}
+.content-section{
+    /* background-color: aqua; */
+    width: 100%;
+    padding:1rem;
+    min-height:200px;
+   font-size: medium;
+   text-align: center;
+   
+}
+.content-section img{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    align-self: flex-start;
+    /* padding:1rem; */
+    margin-bottom:1rem;
+}
+.content-section .content{
+    display: hidden;
+
+}
+
+
+
+
+
+.address-container-card{
+
+        
+    width:70%;
+    min-height:150px;
+    padding:25px;
+    text-align: left;
+    margin-bottom:1rem;
+    margin-left:10%;
+    background-color:peachpuff;
+    box-shadow: 4px 3px 8px 1px #969696;
+}
+
+
+
+
+
+/* .left-nav-div{
+    display:flex;
+    /* flex-direction: column; */
+    /* gap:0.5rem; */ 
+    /* background-color: blanchedalmond; */
+    /* flex-basis: 10%;
+    width:20%;
+    margin-left:20% */
+
+
+/* } */
+/* .right-nav-section{
+    
+} */
+
+/* .parent-container   {} */
+
+
+
+/* }/ */
+/* * body{
     margin:0;
     padding:0;
     text-decoration: none;
 }
 .user-profile{
-    display: flex;
+    display: flex; */
     /* justify-content:center;
     align-items: center; */
-    height:35vh;
+/* height:35vh;
     margin-top:100px;
     /* flex-direction: column; */
 
- 
+/* } */
+/* .user-profile .image img{ */
+/* width:300px; */
+/* height:300px */
 
-}
-.user-profile .image img{
-    width:300px;
-    height:300px
-
-}
-.details {
+/* } */
+/* .details {
     display: flex;
     flex-direction: column;
-    gap:10%;
+    /* gap:10%;
     font-size: 1rem;
-}
-.profile{
+} */
+/* .profile{
     margin:50px;
     /* justify-content: center; */
-    box-shadow: 4px 3px 8px 1px #969696;
+/* box-shadow: 4px 3px 8px 1px #969696;
     width:60%;
     height:65vh;
     display: flex;
@@ -38,4 +160,4 @@ flex-direction: column;
  .header{
     padding:0.5rem;
     /* font-size: larger; */
-}
+/* } */

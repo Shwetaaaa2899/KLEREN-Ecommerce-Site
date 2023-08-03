@@ -3,17 +3,23 @@ import { useContext, useState} from "react"
 import {CartState} from "../context/productsContext"
 import { CartListState } from "../context/CartContext"
 import "./css/productCard.css"
+import { toast } from 'react-toastify'
 import { useEffect } from "react";
 import { AuthContext} from "../context/authcontext"
 import { useNavigate , Link } from "react-router-dom";
 import { AiFillHeart } from "react-icons/ai";
 import { WishListState } from "../context/WishlistContext"
-import { toast } from "react-toastify";
-export default function Product({product}) {
-   const { state :{products}, dispatch,getProductByID } = CartState()
-     const { wishlistdispatch,removeProductToWishList, addProductToWishList,setWishList,value:{wishlist,color},handlewishlistCheck} = WishListState()
-     const { cartdispatch, addProductToCart,state:{cart},handlecartlistCheck} = CartListState()
-     const { token , isLoggedIn} = AuthContext()
+
+export default function Product({product,wishlist : wishlistCheck}) {
+   const { state :{products}, 
+   dispatch,getProductByID } = CartState()
+     const { wishlistdispatch,removeProductToWishList, 
+      addProductToWishList,setWishList,value:{wishlist,color},handlewishlistCheck} = WishListState()
+     const { cartdispatch, 
+      addProductToCart,state:{cart},handlecartlistCheck
+   ,
+   AddProductQuantIncart} = CartListState()
+     const { state:{token , isLoggedIn}} = AuthContext()
 const navigate = useNavigate()
 const showinDetailHandler = (id) =>{
    getProductByID(id)
@@ -37,14 +43,23 @@ else{
 }
 const CartListHandler = (product) =>{
 
-   addProductToCart(product)
+   if( token?.length<= 0){
+
+      toast("Please login first to add in cart products")
+   navigate("/auth")
+   }
+   else 
+   {
+      
+     addProductToCart(product)
+   }
 }
 
 
 
 
    return   <div   className="card">
-<Link to = {`/products/${product._id}`}> 
+<Link to = {`/product/${product._id}`}> 
 <div className = "card-img">
 <img  src={product.image} />
 </div>
@@ -91,15 +106,38 @@ const CartListHandler = (product) =>{
 
   <button  onClick = {()=> CartListHandler(product)} >
 {
-   handlecartlistCheck(product)?"Remove From Cart"
+   handlecartlistCheck(product)?"Go to Cart"
    :"Add to Cart"
 }
 
 
 </button> 
+{
+   wishlistCheck   && handlecartlistCheck(product)
+ &&
 
+ <button  onClick = {()=> {
+   AddProductQuantIncart({product,type:"increment"})
+   toast.success("Cart Quantity increased successfullys")
+ }
+ }
+ >
++1 in Cart
+
+
+</button> 
+}    
 
      </div>
+        
+
+
+</div>
+
+
+
+   
+}
 
  {/* <h1 className = "card-title">{product.title}</h1> */}
 {/*  */}
@@ -123,11 +161,3 @@ const CartListHandler = (product) =>{
 
 
 
-       
-
-</div>
-
-
-
-   
-}

@@ -15,8 +15,8 @@ import ProductDetail from "./pages/ProductDetail"
 import Logout from "./pages/Logout"
 import CheckOut from './pages/Chekout'
 import  {RequiresAuth } from "./components/RequiresAuth"
-// import USerProfile from "./pages/USerProfile"
-import Profile from "./pages/Profile"
+import {USerProfile} from "./pages/USerProfile"
+// import Profile from "./pages/Profile"
 
 import Address from "./pages/Address"
 import { ToastContainer } from 'react-toastify';
@@ -39,14 +39,15 @@ function App() {
 
         <Route path = "/" element={<Home />} />
         <Route path = "/products" element={<ShowProducts />} />
+        <Route path = "/products/:categoryname" element={<ShowProducts />} />
         <Route path = "/cart" element={<RequiresAuth><Cart /></RequiresAuth>} />
-        <Route path = "/profile" element = {<RequiresAuth><Profile/></RequiresAuth>} />
+        <Route path = "/profile" element = {<RequiresAuth><USerProfile/></RequiresAuth>} />
         
         <Route path = "/wishlist" element={<RequiresAuth><WishList /></RequiresAuth>} />
         <Route path = "/mockman" element={ < Mockman />} />
         <Route path = "/auth" element={ < Login />} />
         <Route path = "/signup" element={ < SignUp />} />
-        <Route path="/products/:productID" element={<ProductDetail />} />
+        <Route path="/product/:productID" element={<ProductDetail />} />
         <Route path = "/logout" element = { <Logout/>} />
         <Route path = "/checkout" element = {<CheckOut/>} />
      

@@ -12,7 +12,7 @@ const CheckOut = () =>{
     :
     item?.price  
 , 0 )  
-const address = [{
+const kaddress = [{
   Name:"Adarsh Balika",
   type:"Work",
   line1:"400,A wing",
@@ -23,12 +23,13 @@ pincode:"400010",
 phone:"0999099900"
 
 }]
-const [userAddress,setAdress] = useState(address)
+const {state:{address}} = AuthContext();
+
+const userAddress = address
 const [finaladd,setFinaladd] = useState(address[0])
 const [isAddressSelected,setAddressSelected] = useState(false)
 const addAddress = (data) => {
-  console.log(data)
-  setAdress([...userAddress,data])
+// dispatchEvent({type:""})
 }
 
 console.log(userAddress)
@@ -72,21 +73,21 @@ const openPlaceOrderModal = () =>
   {details.pincode} , {details.state}
 </p>
 <p><strong>Phone:</strong> {details.phone}</p>
-      </div>
+
+</div>
        )
       
 
 
 
     }
-    <button onClick = {setModal}>Add Address</button>
-
-    {
+  {
       modal &&  <AddressModal  closeModal= {closeModal} addAddress= {addAddress}/>
     }
     {
   isAddressSelected  && placeOrder &&  <PaymentModal  closePlaceOrderModal={closePlaceOrderModal}/>
-}
+}<button onClick = {setModal}>Add Address</button>
+
     </div>
 
 <div className="right-section">
@@ -146,10 +147,10 @@ const openPlaceOrderModal = () =>
 </p>
 <p><strong>Phone:</strong> {finaladd.phone}</p>
 
-</div>
- <div>
    <button  onClick = {openPlaceOrderModal}>Place Order</button>
-   </div>
+  
+</div>
+ 
 
 </div>
 

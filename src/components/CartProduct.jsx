@@ -9,7 +9,7 @@ export const CardProduct = ({item}) =>{
     const { removeProductToWishList,
         handlewishlistCheck, addProductToWishList} = WishListState()
     const  CartQUantHandler= ({item :product,type}) =>{
-        console.log(item)
+
         type ==="increment"?AddProductQuantIncart({product,type})
         :RemoveProductQuantIncart({product,type})
        }
@@ -44,8 +44,7 @@ export const CardProduct = ({item}) =>{
 }</small>
 
 <div className="price-section">
-<strong>₹ {item?.qty && item?.qty >=1 ? item?.qty * item.price
-:
+<strong>₹ {
 item?.price  }</strong>
 <small> <span  className = "mrp">MRP :₹
 {item.price+1000} 

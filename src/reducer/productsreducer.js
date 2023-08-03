@@ -11,6 +11,14 @@ switch(action.type){
 
  
     return {...state,products:action.payload,maximumPrice: max,minimumPrice:min}
+   
+   case "SET-LOADER":
+    // console.log("loading",action.payload)
+
+    return {...state,loading:action.payload}
+    case "CLEAR-PRODUCT-IN-DETAIL":
+      return { ...state,ProductToBeDetailed:{},loading:true}
+       
     case "PRODUCT-IN-DETAIL":
        
         return { ...state,ProductToBeDetailed:action.payload}
@@ -52,6 +60,7 @@ switch(action.type){
                   
                  ...state,
                  genre:[],
+                 loading:false,
                  maximumPrice:0,
                  minimumPrice:0,
                  price:300,
@@ -74,7 +83,7 @@ export const initialState = {islaoding:true,
 
  
    ProductToBeDetailed:{},
- 
+   loading:false,
     genre:[],
     maximumPrice:0,
     minimumPrice:0,

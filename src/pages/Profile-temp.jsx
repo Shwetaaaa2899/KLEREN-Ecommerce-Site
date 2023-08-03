@@ -20,7 +20,9 @@ const [modal,setModal] = useState(false)
 const openModal = () => setModal(false)
 const closeModal = () => setModal(false)
   return (
-  <>pppppppp</>
+  <div className="container">
+    <h5>hiii</h5>
+  </div>
 //     <div className="profile_page">
 //       <ul className="profile_list">
 //         {headings?.map((heading, index) => (

@@ -1,6 +1,7 @@
 import "./AddressModal.css"
 import { useState } from "react"
 import { toast } from 'react-toastify'
+import { AuthContext } from "../context/authcontext"
 export const AddressModal = ({closeModal ,addAddress}) =>{
 
     const closeModalHandler = (e) =>{
@@ -9,7 +10,7 @@ export const AddressModal = ({closeModal ,addAddress}) =>{
             closeModal()
         }
     }
-    
+    const {dispatch} = AuthContext()
     const [input,setInput] = useState({
         Name:"",
         type:"",
@@ -30,7 +31,8 @@ export const AddressModal = ({closeModal ,addAddress}) =>{
     
     const submitHandler = (e) =>{
         e.preventDefault();
-   addAddress(input)
+  //  addAddress(input)
+  dispatch({type:"ADD-ADDRESS",payload:input})
    toast("Address added successfully")
        
    closeModal()

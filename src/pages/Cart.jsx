@@ -14,7 +14,7 @@ export default function Cart() {
 const  navigate = useNavigate()
  const {addProductToCart,state:{cart},AddProductQuantIncart,RemoveProductQuantIncart
  ,IsQuantityGreaterThanOne,CheckForPaymentHandler }= CartListState()
- const { token} = AuthContext()
+ const { state:{token}} = AuthContext()
  
  const { wishlistdispatch, addProductToWishList,setWishList,value:{wishlist,color},handlewishlistCheck} = WishListState()
     
@@ -34,9 +34,9 @@ const  CartQUantHandler= ({product,type}) =>{
  type ==="increment"?AddProductQuantIncart({product,type})
  :RemoveProductQuantIncart({product,type})
 }
-    const total =  cart.reduce((acc,item) =>  acc +=  item?.qty && item?.qty >=1 ? item?.qty * item.price
+    const total =  cart.reduce((acc,item) =>  acc +=  item?.qty && item?.qty >1 ? item?.qty * item.price
       :
-      item?.price  
+   item?.price *1  
   , 0 )
 
   const [paymentModal , setPaymentModal] = useState(false)
