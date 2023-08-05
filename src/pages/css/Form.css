@@ -20,7 +20,7 @@
     /* justify-content: center; */
     flex-direction: row;
     margin: 0 auto;
-    margin-top: 2rem;
+    margin-top: 5rem;
     /* align-items: center; */
   }
   input {
@@ -50,6 +50,15 @@
   .header-login {
     margin: 2rem;
   }
+  .submitBtn{
+    font-size: 14px;
+    color:black;
+  }
+
+  .submitBtn span{
+  color:blue
+  }
+
   .submitBtn:hover {
     background-color: transparent;
     color: brown;
@@ -83,6 +92,12 @@
     display: flex;
     position: relative;
   }
+  .login-confirmation NavLink {
+    color: black;
+    font-weight: 5px;
+  }
+ 
+  
   /*
   .form-box {
     min-width: 100%;

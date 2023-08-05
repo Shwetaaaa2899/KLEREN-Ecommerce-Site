@@ -26,7 +26,7 @@ const showinDetailHandler = (id) =>{
 }
 const WishListHandler = (product) =>{
    // console.log("my token is")
-  if( token?.length<= 0){
+  if( token=== null){
    toast("Please login first to shop your fav products")
 navigate("/auth")
 }
@@ -43,7 +43,7 @@ else{
 }
 const CartListHandler = (product) =>{
 
-   if( token?.length<= 0){
+   if( token?.length<= 0 || token === null){
 
       toast("Please login first to add in cart products")
    navigate("/auth")

@@ -32,7 +32,7 @@ export default function Login() {
   const loginClickHandler = (e) => {
     e.preventDefault();
     loginHandler(authInfo);
-    // navigate("/products")
+    // navigate("/auth")
   };
 
   const loginAsGuestHandler = () => {
@@ -51,11 +51,15 @@ return (
       <div className="left">
         <div className="form-box">
           <div className="header-login">
-            <h3>Welcome to the Social Adda</h3>
+            <h3>Welcome to the KLEN ECommerece</h3>
           </div>
 
           <form className="form-login" onSubmit={loginClickHandler}>
             <div className="left-side">
+             
+             
+           
+             
               <label>
                 <p>
                   <h3>Email:</h3>
@@ -66,7 +70,7 @@ return (
                     type="text"
                     name="email"
                     onChange={setUserInfoHandler}
-                    placeholder="Your UserName"
+                    placeholder="Your Email"
                   />
                 </p>
               </label>
@@ -107,15 +111,16 @@ return (
                 </button>
               </div>
             </div>
+           
           </form>
           <div clasName="login-confirmation">
-            {!token && (
-              <NavLink to="/signup" className="submitBtn">
-                Create a New Account?
-                <span>Sign Up</span>
-              </NavLink>
-            )}
-          </div>
+           
+           <NavLink to="/signup" className="submitBtn">
+             Create a New Account?
+             <span>Sign Up</span>
+           </NavLink>
+       
+       </div>
         </div>
       </div>
       <div className="right">

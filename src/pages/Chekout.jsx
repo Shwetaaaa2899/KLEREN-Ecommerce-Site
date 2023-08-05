@@ -8,7 +8,8 @@ import { PaymentModal } from "../components/PaymentModal"
 const CheckOut = () =>{
     const { state:{totalprice,cart}} = CartListState()
    
-    const total =  cart.reduce((acc,item) =>  acc +=  item?.qty && item?.qty >=1 ? item?.qty * item.price
+    const total = cart?.length>0 &&
+     cart?.reduce((acc,item) =>  acc +=  item?.qty && item?.qty >=1 ? item?.qty * item.price
     :
     item?.price  
 , 0 )  
@@ -99,11 +100,13 @@ const openPlaceOrderModal = () =>
 <div className="child-left"><strong>Item</strong>
 
 {
-  cart.map((item) => <p>{item.title}</p>)
+cart?.length>0 &&
+  cart?.map((item) => <p>{item.title}</p>)
 } </div>
 <div className="child-right"><strong> Quantity</strong>
 {
-  cart.map((item) => <p>{item.qty}</p>)
+  cart?.length>0 &&
+  cart?.map((item) => <p>{item.qty}</p>)
 } 
 </div>
 
@@ -139,7 +142,7 @@ const openPlaceOrderModal = () =>
 
 <p>  
 
- <strong>{finaladd.Name}</strong> 
+ <strong>{finaladd?.Name}</strong> 
 </p>
 <p>
   {finaladd.line1} ,{finaladd.area},{finaladd.city},

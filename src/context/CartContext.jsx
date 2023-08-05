@@ -13,7 +13,7 @@ const { state:{token}} = AuthContext()
 
 //  api call to get the cart data
 
-console.log(token)
+// console.log(token)
 const cartListCall = async() =>{
 
    

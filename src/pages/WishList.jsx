@@ -23,7 +23,7 @@ export default function WishList() {
    
     return   <div className="wishlist-wrapper">
 {
-wishlist.length>0?wishlist?.map((product) => <Product key={product._id} product = {product} wishlist = {1} />)
+wishlist?.length>0?wishlist?.map((product) => <Product key={product._id} product = {product} wishlist = {1} />)
 
         :
        <div> <h3>No data in wishlist as of now</h3>

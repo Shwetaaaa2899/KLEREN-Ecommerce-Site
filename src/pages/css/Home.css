@@ -1,0 +1,53 @@
+body{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+    text-decoration: none;
+
+}
+.home-container{
+    margin-top:150px
+}
+
+.home-container h1{
+    padding:1rem;
+    color:#8AAAE5;
+}
+
+.category-container{
+    display: flex;
+    gap:10px;
+    flex-direction: row;
+justify-content: center;
+}
+.category-container .category-card{
+    padding:2rem;
+    width:500px;
+    height:500px;
+    background-color: antiquewhite;
+  
+}
+.category-container .category-card{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+
+}
+
+.category-card .hero{
+
+    background-color: beige;
+    padding:50px;
+    height: 50%;
+    text-decoration: none;
+
+}
+
+.category-card .hero h3,p{
+    color:black;
+    font-size: larger;
+}
+
+.category-card .hero h3:hover,p:hover{
+    color:burlywood;
+}

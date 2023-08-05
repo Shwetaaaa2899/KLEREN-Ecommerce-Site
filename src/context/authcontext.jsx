@@ -30,7 +30,8 @@ const signUpHandler = async({
     password,
     confirmPassword,
     firstName,
-    lastName,
+    lastName
+    
   }) =>{
    if(password ===confirmPassword)
    {
@@ -117,7 +118,7 @@ const loginHandler = async({email ,password}) =>{
         
     console.log("from logi in form - email is ",email,"pass is",password)
     try{const passobj = {email,password}
-    // console.log("username and pass is ", inp,pass)
+    console.log("username and pass is ", email,password)
     const sendreq =await fetch("/api/auth/login",{
         method:"POST",
         headers:{'Accept':'application/json',
@@ -131,7 +132,7 @@ const loginHandler = async({email ,password}) =>{
    
     const { foundUser, encodedToken } = await sendreq.json();
     
-   
+   console.log(foundUser)
         localStorage.setItem(
           "loginDetails",
           JSON.stringify({ user: foundUser, token: encodedToken })
@@ -184,6 +185,13 @@ const toggelSignInHandler = () =>{
     console.log(isLoggedIn,"post setting true")
 }
 
+const localStorageItem = JSON.parse(localStorage.getItem("loginDetails"));
+useEffect(()=>{
+    if (localStorageItem) {
+        dispatch({ type: "SET-PROFILE", payload: localStorageItem?.user });
+        dispatch({ type: "SET-TOKEN", payload: localStorageItem?.token });
+      }
+}, []);
 
 const ValuesToBePassed = {
     state, dispatch,

@@ -83,7 +83,8 @@ onClick = {()=>setSelectedTab(1)}
 
 <strong> Email:</strong>{ profile?.email}
 </p>
-<button>Log Out</button>
+<button className="logout-btn"
+ onClick = {()=>dispatch({type:"LOGOUT"})}>Log Out</button>
     </div>
  }
   

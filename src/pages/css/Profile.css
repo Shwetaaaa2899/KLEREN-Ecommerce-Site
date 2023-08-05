@@ -99,7 +99,9 @@ top:0;
 }
 
 
-
+.logout-btn:hover{
+    cursor: pointer;
+}
 
 
 /* .left-nav-div{
