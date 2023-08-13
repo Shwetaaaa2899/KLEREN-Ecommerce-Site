@@ -1,8 +1,9 @@
 import "./CartProduct.css"
 import { WishListState } from "../context/WishlistContext"
 import {CartListState } from "../context/CartContext"
-
+import { useNavigate } from "react-router-dom"
 export const CardProduct = ({item}) =>{
+    const navigate = useNavigate()
     const {AddProductQuantIncart,RemoveProductQuantIncart
          ,RemoveProductFromcart}= CartListState()
     

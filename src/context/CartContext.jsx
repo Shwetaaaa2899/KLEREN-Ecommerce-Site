@@ -195,10 +195,13 @@ dispatch({type:"GET-TOTAL-PRICE",payload:total})
 }
 
 const  cartdispatch  = dispatch
-    const valueToBePassed = {state,cartdispatch,addProductToCart,
+    const valueToBePassed = {state,cartdispatch,
+        addProductToCart,
         RemoveProductFromcart,
-        cartListCall,handlecartlistCheck,AddProductQuantIncart,
-        RemoveProductQuantIncart,IsQuantityGreaterThanOne
+        cartListCall,handlecartlistCheck,
+        AddProductQuantIncart,
+        RemoveProductQuantIncart,
+        IsQuantityGreaterThanOne
     ,CheckForPaymentHandler}
 
     return <CartListProviderKey.Provider value={valueToBePassed}>{children}</CartListProviderKey.Provider>
