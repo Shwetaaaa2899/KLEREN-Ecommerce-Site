@@ -13,7 +13,7 @@ const ProductDetail = () =>{
     const { productID } = useParams()
     const { state:{token,isloggedIn}} = AuthContext()
   
-    console.log(productID)
+  
     const { state :{ loading,ProductToBeDetailed},dispatch, getProductByID } = CartState( )
     const { wishlistdispatch,removeProductToWishList, addProductToWishList,setWishList,value:{wishlist,color},handlewishlistCheck} = WishListState()
      
@@ -21,7 +21,7 @@ const ProductDetail = () =>{
    
      const WishListHandler = (product) =>{
       // console.log("my token is")
-     if( token?.length<= 0 && !isloggedIn){
+     if( token !== null || !isloggedIn){
       toast("Please login first to shop your fav products")
    navigate("/auth")
    }
@@ -40,7 +40,7 @@ const ProductDetail = () =>{
    
     const CartListHandler =(product) =>{
       // console.log(product, token)
-      if( token?.length<= 0){
+      if( token !== null){
 
          toast("Please login first to add in cart products")
       navigate("/auth")
@@ -61,9 +61,6 @@ const ProductDetail = () =>{
 
       
       getProductByID(productID)
-      // dispatch({type:"SET-LOADER",payload:false})
-      // dispatch({type:"SET-LOADER",payload:false})
-             
    
    },[])
 // const ProductToBeDetailed = {}
@@ -82,6 +79,7 @@ return <>
    <div class="image">
    <img src={ProductToBeDetailed.image} />
 </div>
+
 <div className="action-button-section">
 <button  onClick = { ()=> CartListHandler(ProductToBeDetailed)} >
 
