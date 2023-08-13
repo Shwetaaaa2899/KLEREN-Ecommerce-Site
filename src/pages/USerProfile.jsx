@@ -21,12 +21,12 @@ return   <div className="user-profile-container">
 <div className="tab-section">
    <div
 onClick = {()=>setSelectedTab(1)}
- className={selectedTab===1?"active-div":"inactive-div"}>
+ className={selectedTab===1?"inactive-div":"active-div"}>
     Profile
     </div>
     <div 
     onClick = {()=>setSelectedTab(2)}
-    className={selectedTab===2?"active-div":"inactive-div"}>
+    className={selectedTab===2?"inactive-div":"active-div"}>
     Address
     </div>
 </div>
