@@ -13,17 +13,17 @@ const CheckOut = () =>{
     :
     item?.price  
 , 0 )  
-const kaddress = [{
-  Name:"Adarsh Balika",
-  type:"Work",
-  line1:"400,A wing",
-  area:"Bandra West",
-  city:"Mumbai",
-state:"Maharashtra",
-pincode:"400010",
-phone:"0999099900"
+// const address = [{
+//   Name:"Adarsh Balika",
+//   type:"Work",
+//   line1:"400,A wing",
+//   area:"Bandra West",
+//   city:"Mumbai",
+// state:"Maharashtra",
+// pincode:"400010",
+// phone:"0999099900"
 
-}]
+// }]
 const {state:{address}} = AuthContext();
 
 const userAddress = address
@@ -66,7 +66,9 @@ const openPlaceOrderModal = () =>
       userAddress.length>0  && userAddress.map((details) => 
       <div className="address-card">
       <p>  
-<input type = "radio" name = "address"  onChange = {()=>setAddressSelected(true)}/>
+<input type = "radio" name = "address"  onChange = {()=>{setAddressSelected(true);
+setFinaladd(details)
+}}/>
  <strong>{details.Name}</strong> 
 </p>
 <p>

@@ -86,11 +86,11 @@ cart.length>0
      : {total / 2}
 
        </p>
-       <p>
-<Link to = "$">Apply Coupon
-<AiFillTags /></Link>
+   
+{/* <p>Apply Coupon
+<AiFillTags /></p> */}
 
-       </p>
+    
       </div>
       <div>
       {
@@ -120,38 +120,3 @@ cart.length>0
 
   </div>
 }
-   
- {/* <div class="card">
-
-
- 
-
- <div  style = {{color: handlewishlistCheck(product)?"red":"black"}}  className="menu" onClick={() => addtoWishListHandler(product)}> 
-<AiFillHeart   />
-     </div>
-
-     <div class="image">
-     <img src={product.image} />
-</div>
-
-<div class="title">
- <h1>
- {product.title}</h1>
-</div>
-<div class="title">
- <h1>
-Price {product.price}</h1>
-</div>
-<div class="title">
-<h3>Quantity : {IsQuantityGreaterThanOne(product)}</h3>
-</div>
-
-<button onClick = {()=>CartListHandler(product) }> Remove From Cart </button>
-
-<button   onClick = {()=>CartQUantHandler({product,type:"increment"}
-)
-}
-> +</button>
-<button   onClick = {()=>CartQUantHandler({product,type:"decrement"}) }> -</button>
-        </div>) */
-      }
