@@ -1,9 +1,11 @@
 import "./AddressModal.css"
 import { useState } from "react"
 import { toast } from 'react-toastify'
+import { useNavigate } from "react-router-dom"
  
 import { CartListState } from "../context/CartContext"
 export const PaymentModal = ({closePlaceOrderModal }) =>{
+    const navigate = useNavigate()
     const closeModalHandler = (e) =>{
         if(e?.target.className === "modal-wrapper" || e.target.className === "modal-container")
         {
@@ -16,6 +18,7 @@ const emptyCart = (e) =>{
     e.preventDefault();
     cartdispatch({type:"EMPTY-CART"})
     closePlaceOrderModal()
+    navigate("/products")
 }
     return <>
     <div className="modal-wrapper" onClick={closeModalHandler}></div>
