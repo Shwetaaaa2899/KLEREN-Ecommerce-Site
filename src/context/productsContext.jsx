@@ -53,7 +53,7 @@ const [state, dispatch] = useReducer(ProductsReducer, initialState);
                 ((resp) => resp.json().
                 then((finalAns) => {
                 
-                    dispatch({type:"PRODUCT-IN-DETAIL",payload:finalAns.product})
+                    dispatch({type:"PRODUCT-IN-DETAIL",payload:finalAns?.product})
                     dispatch({type:"SET-LOADER",payload:false})
               }
                 )

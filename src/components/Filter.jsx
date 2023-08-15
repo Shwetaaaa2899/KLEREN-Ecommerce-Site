@@ -52,17 +52,18 @@ const payloadObj = {name,value}
     <div className="sort">
     <h3>Sort By Price</h3>
    
-    <p><input
+    <p  ><input
     
+    className="input"
     type="radio"
     value="lowtohigh"
     name="category"
     onChange={filterDataonSort}
     checked = {sort?.length>0 && sort==="lowtohigh"?true:false}
   />  Sort(lowtohigh)</p>
-  <p>
- <input
-       
+  <p >
+ <input  
+          className="input"
        type="radio"
        name="category"
        value="hightolow"
@@ -102,7 +103,7 @@ const payloadObj = {name,value}
     <p><input
         type="radio"
         name = "gender"
-      
+        className="input"
         value="men"
         onChange={filterDataonCategory}
         checked = {categoryInput?.length>0 && categoryInput==="men"?true:false}
@@ -114,7 +115,7 @@ const payloadObj = {name,value}
       <input
         type="radio"
         name = "gender"
-      
+        className="input"
         value="women"
          onChange={filterDataonCategory}
         checked = {categoryInput?.length>0 && categoryInput==="women"?true:false}
@@ -126,7 +127,7 @@ const payloadObj = {name,value}
       <input
        type="radio"
         name = "gender"
-     
+        className="input"
         value="kids"
         onChange={filterDataonCategory}
         checked = {categoryInput?.length>0 && categoryInput==="kids"?true:false}
@@ -154,7 +155,7 @@ const payloadObj = {name,value}
         type="checkbox"
         value="sports"
         name = "sports"
-      
+        className="input"
         onChange={(e) => filterDataonCheck(e)}
         checked ={genre?.includes("sports")?true:false}
       />
@@ -162,12 +163,14 @@ const payloadObj = {name,value}
      <p> <input
         type="checkbox"
         value="formal"
+        className="input"
         onChange={(e) => filterDataonCheck(e)}
         checked ={genre?.includes("formal")?true:false}
       />
    Formal Wear</p>
    <p> <input
         type="checkbox"
+        className="input"
         value="casual"
     
         onChange={(e) => filterDataonCheck(e)}

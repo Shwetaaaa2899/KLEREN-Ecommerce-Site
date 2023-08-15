@@ -39,6 +39,9 @@ padding: 10px;
 /* height: 100vh; */
   /* top:70px; */
  }
+ .sort input:hover{
+  cursor: pointer ;
+ }
  .filter-heading{
   font-size: 15px;
   color:black ;
