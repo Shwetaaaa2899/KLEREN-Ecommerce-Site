@@ -23,8 +23,15 @@ body{
     gap:10%;
     margin-left:10%;
     margin-top:1.5rem;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     min-height:500px;
+}
+.address-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+    flex-wrap: wrap;
+
 }
 .address-card{
     

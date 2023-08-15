@@ -50,6 +50,7 @@ const openPlaceOrderModal = () =>
      <div className="container-wrapper">
     
      <div  className="left-section">
+     <div  className="address-wrapper">
    
     {/* <button onClick = {openModal} >add address</button> */}
     {
@@ -80,7 +81,7 @@ setFinaladd(details)
     {
   isAddressSelected  && placeOrder &&  <PaymentModal  closePlaceOrderModal={closePlaceOrderModal}/>
 }<button onClick = {setModal}>Add Address</button>
-
+</div>
     </div>
 
 <div className="right-section">
