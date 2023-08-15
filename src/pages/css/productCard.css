@@ -105,40 +105,19 @@ h3{
   margin:5px;
 }
 
-/* *
-body{
-  margin:2rem;
-}
-.wrapper{
-  display:grid;
-  grid-template-columns:repeat(auto=fit,minmax(12rem,16rem));
-  gap:2rem;
-  justify-content: center;
-}
 .card{
-  overflow: hidden;
-  box-shadow: 0 2px 20px olive;
-  border-radius: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  cursor: pointer;
-  transition: transform 200mx ease-in;
-
-
+  position:relative
 }
-.card-img{
-  height:20rem;
-  width: 100%;
-  object-fit: cover;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
-
+.star-div{
+  position:absolute;
+  right:0;
+  top:0;
+  margin-right:0.5rem;
+  margin-bottom:2rem;
+  background-color: white;
+  border-radius:10%;
+  color:black;
 }
-.card-title{}
-.card-btn{}
-.nav{
-  text-decoration: none;
- 
-
-} */
+.star-div:hover{
+  cursor:pointer
+}

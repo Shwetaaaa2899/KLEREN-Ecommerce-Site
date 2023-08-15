@@ -7,7 +7,6 @@ switch(action.type){
 
     const max = action?.payload.reduce((acc,prod) => prod.price>acc?acc = prod.price:acc,0)
  const min = action?.payload.reduce((acc,prod) => prod.price<acc?acc = prod.price:acc,0)
-//  console.log("max and min is",max,min)
 
  
     return {...state,products:action.payload,maximumPrice: max,minimumPrice:min}
@@ -16,6 +15,10 @@ switch(action.type){
     // console.log("loading",action.payload)
 
     return {...state,loading:action.payload}
+
+    case "SET-STAR_RATING":
+      console.log(" STAR_RATING reducer",action.payload)
+      return {...state, starRating:action.payload}
     case "CLEAR-PRODUCT-IN-DETAIL":
       return { ...state,ProductToBeDetailed:{},loading:true}
        
@@ -53,13 +56,14 @@ switch(action.type){
                   ...state,
                    all:!state.all
                      }
-                // return {...state,allFlag : !state.allFlag}
+           
              case "CLEAR-FILTER":
              
              return    {
                   
                  ...state,
                  genre:[],
+                 starRating:-1,
                  loading:false,
                  maximumPrice:3500,
                  minimumPrice:300,
@@ -85,6 +89,7 @@ export const initialState = {islaoding:true,
    ProductToBeDetailed:{},
    loading:false,
     genre:[],
+    starRating:-1,
     maximumPrice:35000,
     minimumPrice:300,
     price:300,

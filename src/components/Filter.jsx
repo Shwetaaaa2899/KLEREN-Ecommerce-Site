@@ -3,18 +3,20 @@ import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import "./css/filter.css"
 import Slider from '@mui/material/Slider';
+import {Rating} from "../components/Rating"
+import {useState} from "react"
 
 const Filter = () => {
-  const { state :{all,genre,price,maximumPrice,minimumPrice,sort,categoryInput},getData, dispatch } = CartState()
+  const { state :{all,genre,price,maximumPrice,minimumPrice,sort,categoryInput,starRating},getData, dispatch } = CartState()
 
-console.log("sort is",sort)
+
   const setInputText = (e) =>{
     dispatch({type:"SEARCH",payload:e.target.value})
   }
-  const showAllProducts = () => {
-    // console.log("1st step")
-    dispatch({type:"DISPLAY-ALL-PRODUCTS"})
-  }
+  // const showAllProducts = () => {
+
+  //   dispatch({type:"DISPLAY-ALL-PRODUCTS"})
+  // }
   const filterDataonCategory = (e) =>{
    
 
@@ -23,7 +25,7 @@ console.log("sort is",sort)
    
   }
   const filterDataonSort = (e) =>{
-    console.log("data",e.target.value)
+ 
     dispatch({type:"SORT",payload:e.target.value}) 
   }
      const filterDataonCheck = (e) =>{
@@ -38,11 +40,13 @@ console.log("sort is",sort)
 const payloadObj = {name,value}
         dispatch({type:"RANGE",payload:payloadObj }) 
       }
-      function valuetext() {
-        // return `${value}°C`;
-      }
-      
    
+      // rating 
+
+      const setRating = (i) =>{
+        dispatch({type:"SET-STAR_RATING",payload:i})
+      }
+  
   return (
     <div  className="filter-div">
      <div className = "filter-heading"> 
@@ -137,17 +141,7 @@ const payloadObj = {name,value}
     </div>
  
      
-    {/* <div   className = "input">
-      <input
-        type="radio"
-        name = "gender"
-    value="all"
-        onChange= {showAllProducts}
-        checked = {all}
-       
-      />
-     All
-</div> */}
+   {/* checkbox category */}
 
 <div className="genre">
 <h3>Genre</h3>
@@ -179,9 +173,14 @@ const payloadObj = {name,value}
  Casual Wear  </p>
 </div>
      
-      {/* checkbox category */}
+     {/* star rating category */}
+     <div className="star-rating-div">
+     <h3>Star</h3>
+     <Rating  rating = {starRating} setRating = {setRating} style = {{cursor:"pointer"}}/>
+     </div>
    
  <button className="button" onClick = {ClearFilterHandler} >Clear Filter</button>
+
    </div>
   );
 };

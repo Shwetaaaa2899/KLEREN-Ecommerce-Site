@@ -90,7 +90,17 @@ const filteredDataOnPrice =  state?.price > 300 ?filteredDataOnInput.filter((pro
 const filteredDataForGenre = state?.genre.length>0 ?
 filteredDataOnPrice.filter((product) => state?.genre.includes(product.genre)):
 filteredDataOnPrice
-const filteredData = state?.all? state?.products:filteredDataForGenre
+
+// const filterDataBasedOnStarRating = state?starRating !== -1?
+// filteredDataForGenre.filter((product) => product.star <= state?starRating))
+// :filteredDataForGenre
+
+const filterDataBasedOnStarRating = state?.starRating !== -1 ?
+filteredDataForGenre.filter((product) => product?.star <= state?.starRating + 1):
+filteredDataForGenre
+
+
+const filteredData = state?.all? state?.products:filterDataBasedOnStarRating
 
    const ValuesToBePassed = {state,isloading, dispatch,getProductByID,getData,filteredData}
    return <ProductsProviderkey.Provider value = {ValuesToBePassed}>{children}</ProductsProviderkey.Provider>

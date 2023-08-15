@@ -69,6 +69,9 @@ const CartListHandler = (product) =>{
 <div className = "card-img">
 <img  src={product.image} />
 </div>
+<div className="star-div">
+   {product.star} ⭐
+</div>
 <div className = "card-info">
 <h3 className = "card-title">{product.title}</h3>
 <small>{ 
@@ -145,21 +148,6 @@ const CartListHandler = (product) =>{
    
 }
 
- {/* <h1 className = "card-title">{product.title}</h1> */}
-{/*  */}
-
-{/* <label className = "card-title">Price:</label>{product.price} */}
-
-
-{/* 
- <button className = "card-btn"  style = {{textDecoration:"none" , color:"white" ,border:"none"}} >
-
-<NavLink   className = "nav"   to = {`/products/${product._id}`} >Show in Detail</NavLink>
-                 
-        
-</button> */}
-
-{/* */}
 
 
 
