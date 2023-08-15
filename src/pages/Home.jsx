@@ -1,12 +1,22 @@
 import Filter from "../components/Filter"
 import { useState } from "react"
 import "./css/Home.css"
-import { useParams ,Link } from "react-router-dom"
+import { useParams ,Link ,NavLink} from "react-router-dom"
 export default function Home() {
 
-
     return <div className="home-container" >
- 
+ <div className="hero-section-wrapper">
+        <img src = "https://www.omnisend.com/blog/wp-content/uploads/2021/03/21-03-19-Fashion-ecommerce.jpg" alt = "hero-image"/>
+       
+        <NavLink to = "/products">
+        <button className="hero-btn" >
+        Let's Explore
+        </button>
+        </NavLink>
+      
+      
+       
+ </div>
 <h1>Explore Our Categories</h1>
     <div className="category-container">
 
@@ -60,11 +70,7 @@ export default function Home() {
 </div>
         </div>
         </div>
-        {/* <div className="category-card">
-        <Link to = {`/products/general`}>
-        <button >general </button>
-        </Link>
-        </div> */}
+        
         </div>
    
 
