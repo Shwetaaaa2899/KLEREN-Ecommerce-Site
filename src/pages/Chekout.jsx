@@ -44,6 +44,7 @@ const openPlaceOrderModal = () =>
     setPlaceOrder(true)
   }
 }
+const totalAmount = total-(total/2)
 
     return<div  className="checkout-wrapper">
      <h3>CHECKOUT</h3>
@@ -123,7 +124,7 @@ cart?.length>0 &&
 <p>-{total/2}</p>
 <p>FREE</p>
 <p>₹   0</p>
-<p><strong>{total}-{total/2}</strong></p>
+<p><strong>{totalAmount}</strong></p>
 </div>
 
 </div>
@@ -143,7 +144,7 @@ cart?.length>0 &&
 </p>
 <p><strong>Phone:</strong> {finaladd?.phone}</p>
 
-   <button  onClick = {openPlaceOrderModal}>Place Order</button>
+   <button className="place-prder-btn" onClick = {openPlaceOrderModal}>Place Order</button>
   
 </div>
  
