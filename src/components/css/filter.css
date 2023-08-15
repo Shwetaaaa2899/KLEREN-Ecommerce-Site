@@ -26,12 +26,12 @@ padding: 10px;
  .filter-heading{
   font-size: 15px;
   color:black ;
-  margin-bottom: 0.5rem;
+  /* margin-bottom: 0.5rem; */
  }
  .genre , .category,.sort{
   display: flex;
   flex-direction: column;
-  padding: 1.5rem;
+  padding: 1rem;
  }
 
  .rates{
