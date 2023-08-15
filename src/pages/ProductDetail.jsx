@@ -102,11 +102,13 @@ return <>
    </div> 
    <div className="right-div">
       <div className="product-details">
-      <h1>
+    <h1>
  {ProductToBeDetailed.title}</h1>
  <small> {ProductToBeDetailed.categoryName}'s wear</small>
       </div>
       <div className="price-info">
+      <p>Rating: {ProductToBeDetailed.star} ⭐</p>
+    
 <p>Price:₹ {ProductToBeDetailed.price}</p>
 
 <p><span   className = "mrp" >MRP :₹ 
