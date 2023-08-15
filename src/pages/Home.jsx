@@ -15,7 +15,7 @@ const categoryWiseNavigate = (category) => {
         <img src = "https://www.omnisend.com/blog/wp-content/uploads/2021/03/21-03-19-Fashion-ecommerce.jpg" alt = "hero-image"/>
        
         <NavLink to = "/products">
-        <button className="hero-btn" >
+        <button className="hero-btn" onClick = {()=>dispatch({type:"CLEAR-FILTER"})}>
         Let's Explore
         </button>
         </NavLink>
