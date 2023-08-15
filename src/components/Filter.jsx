@@ -148,7 +148,7 @@ const payloadObj = {name,value}
 <p><input    
         type="checkbox"
         value="sports"
-        name = "sports"
+    style = {{cursor:"pointer"}}
         className="input"
         onChange={(e) => filterDataonCheck(e)}
         checked ={genre?.includes("sports")?true:false}

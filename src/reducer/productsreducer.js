@@ -26,6 +26,7 @@ switch(action.type){
        
         return { ...state,ProductToBeDetailed:action.payload}
         case "SEARCH":
+          console.log("esrach in reducer",action.payload)
           return {...state,search:action.payload}
           case "SORT":
             return {...state,sort:action.payload}
@@ -34,7 +35,7 @@ switch(action.type){
               
            return  {...state, categoryInput:action.payload,allFlag : !state.allFlag}
            case "GENRE":
-              // console.log(action.payload)
+           
             
            return  state.genre.includes(action.payload)?{...state,genre:state.genre.filter((type) => type !== action.payload)}
           :
@@ -43,13 +44,12 @@ switch(action.type){
             case "RANGE":
               
              const { name,value} = action.payload
-            //  console.log("reducer range",name,value)
-            //  console.log(state)
+          
 
               return {...state,[name]:Number(value)}
               case "DISPLAY-ALL-PRODUCTS":
-               //  console.log("2st step")
-                console.log(!state.all,"before check")
+           
+               
 
                 return    {
                   

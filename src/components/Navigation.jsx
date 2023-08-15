@@ -7,14 +7,17 @@ import {CartListState } from "../context/CartContext"
 import { RiAccountCircleFill } from "react-icons/ri"
 import { MdOutlineExplore } from "react-icons/md"
 
-
+import {CartState} from "../context/productsContext"
 export default function  Navigation(){
     const {dispatch, state:{token,isLoggedIn},logoutHandler,userInfo} = AuthContext()
-const { state:{cart} } = CartListState()
+const { state:{cart} ,} = CartListState()
+const {filterDispatch
+} = CartState()
 const {value: {wishlist} } = WishListState()
-console.log(token,"from auth")
+const searchEventHandler = (e) => {
+  filterDispatch({type:"SEARCH",payload:e.target.value})
+}
 
-// console.log("userinfo post login is",userInfo,"and login flag is",isLoggedIn)
    return <>
     <nav>
     <div className="container">
@@ -22,12 +25,16 @@ console.log(token,"from auth")
         {/* <Brand /> */}
         <NavLink to = "/" >  <h2><span>k</span>leren</h2> </NavLink>
       </div>
+      <div>
+<span><input type = "text" placeholder = "search your fav products" onChange = {searchEventHandler} /></span>
+          </div>
       <div className="nav-elements">
       
         <ul>
           <li>
           <NavLink to = "/products" >Explore <MdOutlineExplore/></NavLink>
           </li>
+      
           
           <li> <NavLink to = "/wishlist" >WishList
                 {token &&  (wishlist?.length)}

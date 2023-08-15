@@ -86,23 +86,24 @@ const filteredDataOnInput = state?.categoryInput !== ""?filteredDataOnSort.filte
 const filteredDataOnPrice =  state?.price > 300 ?filteredDataOnInput.filter((prod) => prod.price <= state?.price)
 :filteredDataOnInput
 
-// console.log(state.allFlag)
+
 const filteredDataForGenre = state?.genre.length>0 ?
 filteredDataOnPrice.filter((product) => state?.genre.includes(product.genre)):
 filteredDataOnPrice
 
-// const filterDataBasedOnStarRating = state?starRating !== -1?
-// filteredDataForGenre.filter((product) => product.star <= state?starRating))
-// :filteredDataForGenre
 
 const filterDataBasedOnStarRating = state?.starRating !== -1 ?
 filteredDataForGenre.filter((product) => product?.star <= state?.starRating + 1):
 filteredDataForGenre
 
-
-const filteredData = state?.all? state?.products:filterDataBasedOnStarRating
-
-   const ValuesToBePassed = {state,isloading, dispatch,getProductByID,getData,filteredData}
+const filterDataBasedOnSearchInput = state?.search !== ""?
+filteredDataOnPrice.filter((product) => product.title.toLowerCase().includes(state?.search.trim().toLowerCase()
+)
+)
+:filterDataBasedOnStarRating
+const filteredData = state?.all? state?.products:filterDataBasedOnSearchInput
+const filterDispatch = dispatch
+   const ValuesToBePassed = {state,isloading, filterDispatch,dispatch,getProductByID,getData,filteredData}
    return <ProductsProviderkey.Provider value = {ValuesToBePassed}>{children}</ProductsProviderkey.Provider>
 }
 
