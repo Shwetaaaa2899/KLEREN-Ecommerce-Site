@@ -21,7 +21,7 @@ const ProductDetail = () =>{
    
      const WishListHandler = (product) =>{
       // console.log("my token is")
-     if( token === null || !isloggedIn){
+     if( token === null ){
       toast("Please login first to shop your fav products")
    navigate("/auth")
    }
