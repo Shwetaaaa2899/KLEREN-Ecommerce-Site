@@ -19,6 +19,7 @@
 .left-container {
     flex-basis: 20%;
     margin-top: 0.5rem;
+    margin-top: 1rem;
 }
 .right-container {
     flex: 80%;
