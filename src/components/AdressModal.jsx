@@ -87,7 +87,7 @@ export const AddressModal = ({closeModal ,addAddress}) =>{
                     type="text"
                     name="phone"
                     onChange={setAddInfoHandler}
-                    placeholder="Address"
+                    placeholder="Phone Number"
                   />
                 </p>
               </label>

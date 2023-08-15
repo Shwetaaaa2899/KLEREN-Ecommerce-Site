@@ -137,10 +137,10 @@ cart?.length>0 &&
  <strong>{finaladd?.Name}</strong> 
 </p>
 <p>
-  {finaladd.line1} ,{finaladd.area},{finaladd.city},
-  {finaladd.pincode} , {finaladd.state}
+  {finaladd?.line1} ,{finaladd?.area},{finaladd?.city},
+  {finaladd?.pincode} , {finaladd?.state}
 </p>
-<p><strong>Phone:</strong> {finaladd.phone}</p>
+<p><strong>Phone:</strong> {finaladd?.phone}</p>
 
    <button  onClick = {openPlaceOrderModal}>Place Order</button>
   
