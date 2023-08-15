@@ -124,8 +124,9 @@ const AddProductQuantIncart = async({product,type}) =>{
     console.log(product,"api",type, token)
     
     try{
+     
     
-      const requestedbody  = {action:{type}}
+      const requestedbody  = { action:{type} }
         const sendreq =await fetch(`/api/user/cart/${product._id}`,{
             method:"POST",
             headers:{'Accept':'application/json',
@@ -137,7 +138,7 @@ const AddProductQuantIncart = async({product,type}) =>{
         console.log("received data  after qant + from cart",sendreq)
       if(sendreq.status === 200 || sendreq.status === 201){
         const response = await sendreq.json();
-        console.log("received data  after qant + from cart",response)
+       console.log("received data  after qant + from cart",response)
       
         dispatch({type:"INCREASE-QUANTITY",payload:response?.cart})
       
