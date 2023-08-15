@@ -21,7 +21,7 @@ const ProductDetail = () =>{
    
      const WishListHandler = (product) =>{
       // console.log("my token is")
-     if( token !== null || !isloggedIn){
+     if( token === null || !isloggedIn){
       toast("Please login first to shop your fav products")
    navigate("/auth")
    }
@@ -40,7 +40,7 @@ const ProductDetail = () =>{
    
     const CartListHandler =(product) =>{
       // console.log(product, token)
-      if( token !== null){
+      if( token === null){
 
          toast("Please login first to add in cart products")
       navigate("/auth")
