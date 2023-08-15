@@ -45,25 +45,10 @@ export default function ShowProducts() {
 )}
 </div>
 </div>
-    {/* {
-        isloading?(<h1>Laoding......</h1>):
-        <div className = "mainFrame">
-        <Filter key = {filter} className = "filter"  />
-    
-<div className = "cards-parent-container" >
-{ filteredData?.map((product) =>  
 
-<Product key={product._id} product = {product} />
-)}
-</div>
-    
-   
- </div>
-    }
-    
 
     
     
-    */}
+ 
     </div>
 }

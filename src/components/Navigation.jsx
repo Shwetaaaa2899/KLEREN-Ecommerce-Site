@@ -6,7 +6,7 @@ import {WishListState } from "../context/WishlistContext"
 import {CartListState } from "../context/CartContext"
 import { RiAccountCircleFill } from "react-icons/ri"
 import { MdOutlineExplore } from "react-icons/md"
-
+import {AiOutlineSearch} from "react-icons/ai"
 import {CartState} from "../context/productsContext"
 export default function  Navigation(){
     const {dispatch, state:{token,isLoggedIn},logoutHandler,userInfo} = AuthContext()
@@ -25,8 +25,9 @@ const searchEventHandler = (e) => {
         {/* <Brand /> */}
         <NavLink to = "/" >  <h2><span>k</span>leren</h2> </NavLink>
       </div>
-      <div>
-<span><input type = "text" placeholder = "search your fav products" onChange = {searchEventHandler} /></span>
+      <div className='input-wrapper'>
+      <AiOutlineSearch />
+<input  className = "search-input" type = "text" placeholder = "search your fav products" onChange = {searchEventHandler} />
           </div>
       <div className="nav-elements">
       
