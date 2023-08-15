@@ -7,7 +7,8 @@ import {Rating} from "../components/Rating"
 import {useState} from "react"
 
 const Filter = () => {
-  const { state :{all,genre,price,maximumPrice,minimumPrice,sort,categoryInput,starRating},getData, dispatch } = CartState()
+  const { state :{all,genre,price,maximumPrice,minimumPrice,sort,
+    categoryInput,starRating},getData, dispatch } = CartState()
 
 
   const setInputText = (e) =>{
