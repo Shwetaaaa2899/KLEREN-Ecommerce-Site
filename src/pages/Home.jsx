@@ -3,6 +3,7 @@ import { useState } from "react"
 import "./css/Home.css"
 import {CartState} from "../context/productsContext"
 import { useParams ,Link ,NavLink} from "react-router-dom"
+import Image from "./HomePage.jpg"
 export default function Home() {
         const { dispatch } = CartState()
 const categoryWiseNavigate = (category) => {
@@ -12,8 +13,8 @@ const categoryWiseNavigate = (category) => {
 }
     return <div className="home-container" >
  <div className="hero-section-wrapper">
-        <img src = "https://www.omnisend.com/blog/wp-content/uploads/2021/03/21-03-19-Fashion-ecommerce.jpg" alt = "hero-image"/>
-       
+        <img src = {Image} alt = "hero-image"/>
+       {/* <Image /> */}
         <NavLink to = "/products">
         <button className="hero-btn" onClick = {()=>dispatch({type:"CLEAR-FILTER"})}>
         Let's Explore
