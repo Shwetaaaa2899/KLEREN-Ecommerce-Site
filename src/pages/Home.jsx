@@ -2,8 +2,11 @@ import Filter from "../components/Filter"
 import { useState } from "react"
 import "./css/Home.css"
 import {CartState} from "../context/productsContext"
+
 import { useParams ,Link ,NavLink} from "react-router-dom"
 import Image from "./HomePage.jpg"
+import { Footer } from "../components/Footer/Footer"
+import {HomeCategory} from "../components/HomeCategory/HomeCategory"
 export default function Home() {
         const { dispatch } = CartState()
 const categoryWiseNavigate = (category) => {
@@ -14,7 +17,7 @@ const categoryWiseNavigate = (category) => {
     return <div className="home-container" >
  <div className="hero-section-wrapper">
         <img src = {Image} alt = "hero-image"/>
-       {/* <Image /> */}
+     
         <NavLink to = "/products">
         <button className="hero-btn" onClick = {()=>dispatch({type:"CLEAR-FILTER"})}>
         Let's Explore
@@ -24,60 +27,12 @@ const categoryWiseNavigate = (category) => {
       
        
  </div>
-<h1>Explore Our Categories</h1>
-    <div className="category-container">
 
-        <div className="category-card" onClick = {()=>categoryWiseNavigate("kids")}>
+<div className="cat-heading"><h2>Explore Our Categories</h2> </div>
 
-     
-<div className="hero">
-<Link to = {`/products/kids`}>
- <h3>KID's Wear </h3>
- <p>Upto 30-70% OFF</p>
- <p>Shop Now</p>
-</Link>
-</div>     
-<div>
-
-                       
-     
-      
-</div>  
-        
-        </div>
-        <div className="category-card" onClick = {()=>categoryWiseNavigate("men")}>
-      
-      
-        <div className="hero">
-        <Link to = {`/products/men`}>
- <h3>MEN's Wear </h3>
- <p>Upto 30-50% OFF</p>
- <p>Shop Now</p>
- </Link>
-</div>     
-<div>
-        
-        
-       
-        </div>
-        </div>
-        <div className="category-card" onClick = {()=>categoryWiseNavigate("women")}>
-      
-      
-        <div className="hero">
-       
-        <Link to = {`/products/women`}>
- <h3>WOMEN's Wear </h3>
- <p>Upto 50-90% OFF</p>
- <p>Shop Now</p>
- </Link>
-       
-
-       
-</div>
-        </div>
-        </div>
-        
+<HomeCategory />
+  
+        <Footer />
         </div>
    
 
