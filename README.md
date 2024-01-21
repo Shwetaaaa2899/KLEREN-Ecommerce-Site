@@ -33,4 +33,3 @@ There is cart page, which is a protected route, so the user can only go to the c
 
 Live project - https://kleren-ecommerce.netlify.app/  < br/></br/>
 
-Link for loom video : https://www.loom.com/share/51d64370ad704bcf9ea548374d8f0a08?sid=6202462a-0ad5-4bff-a659-f5413ec687b9
