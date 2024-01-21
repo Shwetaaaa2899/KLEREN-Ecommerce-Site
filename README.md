@@ -1,5 +1,5 @@
 
-**KLEREN ECOMMERCE **<br/>
+KLEREN ECOMMERCE <br/>
 <br/>
 This is an e-commerce platform for fashion products, made using React, Vanilla css, React-router-dom, Mockbee e-commerce template for backend, react-toastify. <br/>
 
