@@ -1,12 +1,12 @@
 
-import "./Home.css"
+import "./Landing.css"
 import {CartState} from "../../context/productsContext"
 
 import { NavLink} from "react-router-dom"
 import Image from "./HomePage.jpg"
-import { Footer } from "../../components/Footer/Footer"
+import { Footer } from "../../components/footer/Footer"
 import {HomeCategory} from "../../components/homeCategory/HomeCategory"
-export default function Home() {        
+export default function Landing() {        
         const { dispatch } = CartState()
 
     return <div className="home-container" >

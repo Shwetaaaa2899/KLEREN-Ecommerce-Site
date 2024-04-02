@@ -3,7 +3,7 @@ import logo from "./logo.png";
 import { Routes,Route , NavLink} from "react-router-dom"
 import ShowProducts from "./pages/homePage/Products";
 import WishList from "./pages/wishlist/WishList";
-import Home from "./pages/landingPage/Home"
+import Home from "./pages/landing/Landing"
 import Cart from "./pages/cart/Cart"
 import Mockman from "mockman-js";
 import Navbar from "./components/navbar/Navbar"
