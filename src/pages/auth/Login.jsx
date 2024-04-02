@@ -1,18 +1,11 @@
-import { AuthContext } from "../context/authcontext"
+import { AuthContext } from "../../context/authcontext"
 import { useNavigate ,NavLink,useLocation} from "react-router-dom"
-import { toast } from "react-toastify"
 import { useState} from "react"
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import { AiOutlineEye } from "react-icons/ai";
 
-import "./css/Form.css"
+import "./Form.css"
 export default function Login() {
-  //  const location = useLocation()
-  //  const navigate = useNavigate()
-// const [userLoginInfo,setUserLoginInfo] = useState({email:"",password:""})
-    // const { isLoggedIn,loginHandler,toggelSignInHandler,token } = AuthContext()
-    // console.log(isLoggedIn,"pre setting true")
-
 
 
   const location = useLocation();
@@ -27,25 +20,20 @@ export default function Login() {
     email: "adarshbalika@gmail.com",
     password: "adarshbalika",
   };
-  // console.log("location in auth page is",location)
 
   const loginClickHandler = (e) => {
     e.preventDefault();
     loginHandler(authInfo);
-    // navigate("/auth")
   };
 
   const loginAsGuestHandler = () => {
-    // toast("Logged in as Guest")
     setAuthInfo(GuestModeData);
-    // loginHandler(GuestModeData);
-    // navigate("/products")
+
   };
   const [passwordVisible, setPasswordVisible] = useState(false);
   
 return (
   <div>
-    {/* <Header /> */}
 
     <div className="login-container">
       <div className="left">

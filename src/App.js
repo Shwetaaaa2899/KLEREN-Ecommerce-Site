@@ -1,24 +1,21 @@
 // import "./App.css";
 import logo from "./logo.png";
 import { Routes,Route , NavLink} from "react-router-dom"
-import ShowProducts from "./pages/Products";
-import WishList from "./pages/WishList";
-import Home from "./pages/Home"
-import Cart from "./pages/Cart"
-import Header from "./components/Header"
-import Filters from "./components/Filter"
+import ShowProducts from "./pages/homePage/Products";
+import WishList from "./pages/wishlist/WishList";
+import Home from "./pages/landingPage/Home"
+import Cart from "./pages/cart/Cart"
 import Mockman from "mockman-js";
-import Navbar from "./components/Header"
-import Login from "./pages/Login"
-import SignUp from "./pages/SignUp"
-import ProductDetail from "./pages/ProductDetail"
-import Logout from "./pages/Logout"
-import CheckOut from './pages/Chekout'
-import  {RequiresAuth } from "./components/RequiresAuth"
-import {USerProfile} from "./pages/USerProfile"
-// import Profile from "./pages/Profile"
+import Navbar from "./components/navbar/Navbar"
+import Login from "./pages/auth/Login"
+import SignUp from "./pages/auth/SignUp"
+import ProductDetail from "./pages/productInDetail/ProductDetail"
+import CheckOut from './pages/checkout/Chekout'
+import  {RequiresAuth } from "./components/requiresAuth/RequiresAuth"
+import {USerProfile} from "./pages/profile/USerProfile"
 
-import Address from "./pages/Address"
+
+import Address from "./pages/adress/Address"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 function App() {
@@ -27,7 +24,7 @@ function App() {
     <div className="App">
       <header className="App-header">
    
-     <Header />
+     <Navbar />
      <br/>
      <ToastContainer
         position="top-right"
@@ -48,7 +45,6 @@ function App() {
         <Route path = "/auth" element={ < Login />} />
         <Route path = "/signup" element={ < SignUp />} />
         <Route path="/product/:productID" element={<ProductDetail />} />
-        <Route path = "/logout" element = { <Logout/>} />
         <Route path = "/checkout" element = {<CheckOut/>} />
      
         {/* <Route path = "/profile/" element = {<USerProfile/>} /> */}

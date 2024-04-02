@@ -1,7 +1,5 @@
-import { useState , createContext, useContext,useReducer } from "react"
-import AddressReducer,{initialState} from "../reducer/userreducer"
-import { useEffect } from "react"
-import { AuthContext} from "./authcontext"
+import { createContext, useContext } from "react"
+
  export const AddressProviderkey = createContext()
 
 

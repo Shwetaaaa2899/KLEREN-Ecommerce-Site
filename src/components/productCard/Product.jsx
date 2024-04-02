@@ -1,41 +1,30 @@
-import { NavLink } from "react-router-dom";
-import { useContext, useState} from "react"
-import {CartState} from "../context/productsContext"
-import { CartListState } from "../context/CartContext"
-import "./css/productCard.css"
+import { CartListState } from "../../context/cartContext"
+import "./productCard.css"
 import { toast } from 'react-toastify'
-import { useEffect } from "react";
-import { AuthContext} from "../context/authcontext"
+import { AuthContext} from "../../context/authcontext"
 import { useNavigate , Link } from "react-router-dom";
-import { AiFillHeart } from "react-icons/ai";
-import { WishListState } from "../context/WishlistContext"
+import { WishListState } from "../../context/wishlistContext"
 
 export default function Product({product,wishlist : wishlistCheck}) {
-   const { state :{products}, 
-   dispatch,getProductByID } = CartState()
-     const { wishlistdispatch,removeProductToWishList, 
-      addProductToWishList,setWishList,value:{wishlist,color},handlewishlistCheck} = WishListState()
-     const { cartdispatch, 
+ 
+     const { removeProductToWishList, 
+      addProductToWishList,handlewishlistCheck} = WishListState()
+     const { 
       addProductToCart,state:{cart},handlecartlistCheck
    ,
    AddProductQuantIncart} = CartListState()
-     const { state:{token , isLoggedIn}} = AuthContext()
+     const { state:{token }} = AuthContext()
 const navigate = useNavigate()
-const showinDetailHandler = (id) =>{
-   getProductByID(id)
-}
+
 const WishListHandler = (product) =>{
-   // console.log("my token is")
   if( token === null){
    toast("Please login first to shop your fav products")
 navigate("/auth")
 }
 else if(handlewishlistCheck(product)){
-   // console.log("I am in removing prod case with token")
    removeProductToWishList(product)
 }
 else{
-   // console.log("I am in adding prod case with token")
  
    addProductToWishList(product)
  
@@ -99,7 +88,6 @@ const CartListHandler = (product) =>{
  </Link>
 
   <div  className = "icons-section">
- {/* style = {{color: handlewishlistCheck(product)?"red":"black"}}   */}
  <button  
   onClick={() => WishListHandler(product)}> 
   

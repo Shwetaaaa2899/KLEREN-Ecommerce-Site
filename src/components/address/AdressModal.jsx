@@ -1,7 +1,7 @@
 import "./AddressModal.css"
 import { useState } from "react"
 import { toast } from 'react-toastify'
-import { AuthContext } from "../context/authcontext"
+import { AuthContext } from "../../context/authcontext"
 export const AddressModal = ({closeModal ,addAddress}) =>{
 
     const closeModalHandler = (e) =>{

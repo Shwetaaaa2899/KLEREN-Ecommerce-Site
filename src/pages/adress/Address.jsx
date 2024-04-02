@@ -1,15 +1,10 @@
-import { useAddressContext } from "../context/addresscontext"
-import { AuthContext } from "../context/authcontext";
 import { NavLink } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
-import { AddressContext } from "../context/addresscontext"
-// import { useAddressContext } from "../context/addresscontext"
 const Address = () =>{
     const headings = ["Profile", "Address"];
     const routes = ["", "address"];
     const location = useLocation()
-    const {userInfo} = AuthContext()
     const dummy = {
         Name:"Adarsh Balika",
         area:"Bandra West",
@@ -20,13 +15,11 @@ const Address = () =>{
     
     }
 
-    const fullname = `{userInfo.firstName} {userInfo.lastName}`
    
     const [address,setAddress]  = useState({Name:"", area:"", city:"",state:"",pincode:"",phone:""})
     const [showaddress,setShowAddress]  = useState({Name:"", area:"", city:"",state:"",pincode:"",phone:""})
     const { Name, area, city, state, pincode,phone } = showaddress
     const [readonly,setReadOnly] = useState(false)
-    console.log("addres is",address)
     const updateInfo = (e) =>{setAddress({...address,[e.target.name] : e.target.value})}
     const SaveInfo = () =>{
         console.log("SAVE-INFO")

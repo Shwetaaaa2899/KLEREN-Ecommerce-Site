@@ -4,11 +4,11 @@ import { useContext} from "react"
 import { useParams ,Link } from "react-router-dom"
 // import { useEffect } from "react"
 import {useState,useEffect} from "react"
-import Filter from "../components/Filter"
-import Product  from "./Product"
-import "./css/MainContainer.css"
+import Filter from "../../components/filter/Filter"
+import Product  from "../../components/productCard/Product"
+import "./MainContainer.css"
 import { toast } from "react-toastify"
-import {CartState} from "../context/productsContext"
+import {CartState} from "../../context/productsContext"
 import { ClipLoader } from "react-spinners";  
 export default function ShowProducts() {
  

@@ -1,10 +1,10 @@
-import { CartListState} from "../context/CartContext"
-import { AuthContext} from "../context/authcontext"
-import {AddressModal} from "../components/AdressModal"
-import "./css/Checkout.css"
+import { CartListState} from "../../context/cartContext"
+import { AuthContext} from "../../context/authcontext"
+import {AddressModal} from "../../components/address/AdressModal"
+import "./Checkout.css"
 import { toast } from 'react-toastify'
 import { useState } from "react"
-import { PaymentModal } from "../components/PaymentModal"
+import { PaymentModal } from "../../components/paymentModal/PaymentModal"
 const CheckOut = () =>{
     const { state:{totalprice,cart}} = CartListState()
    
@@ -20,7 +20,6 @@ const userAddress = address
 const [finaladd,setFinaladd] = useState(address[0])
 const [isAddressSelected,setAddressSelected] = useState(false)
 const addAddress = (data) => {
-// dispatchEvent({type:""})
 }
 
 console.log(userAddress)

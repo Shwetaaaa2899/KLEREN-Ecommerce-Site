@@ -6,10 +6,9 @@ import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
 import ProductsProvider from "./context/productsContext"
 import  AuthProvider from "./context/authcontext"
-import WishListProvider from "./context/WishlistContext"
-import CartListProvider from "./context/CartContext"
+import WishListProvider from "./context/wishlistContext"
+import CartListProvider from "./context/cartContext"
 import  AddresssProvider from "./context/addresscontext"
-// import { ToastContainer } from 'react-toastify';
 
 
 // Call make Server

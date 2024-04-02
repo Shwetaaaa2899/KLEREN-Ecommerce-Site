@@ -1,23 +1,16 @@
-import {CartState} from "../context/productsContext"
-import { useContext } from "react";
-import { NavLink } from "react-router-dom";
-import "./css/filter.css"
-import Slider from '@mui/material/Slider';
-import {Rating} from "../components/Rating"
-import {useState} from "react"
+import {CartState} from "../../context/productsContext"
+import "./filter.css"
+import {Rating} from "../starRating/Rating"
 
 const Filter = () => {
-  const { state :{all,genre,price,maximumPrice,minimumPrice,sort,
-    categoryInput,starRating},getData, dispatch } = CartState()
+  const { state :{genre,price,maximumPrice,minimumPrice,sort,
+    categoryInput,starRating}, dispatch } = CartState()
 
 
   const setInputText = (e) =>{
     dispatch({type:"SEARCH",payload:e.target.value})
   }
-  // const showAllProducts = () => {
 
-  //   dispatch({type:"DISPLAY-ALL-PRODUCTS"})
-  // }
   const filterDataonCategory = (e) =>{
    
 

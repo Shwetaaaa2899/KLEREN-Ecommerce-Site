@@ -1,9 +1,7 @@
-import { Outlet } from "react-router-dom"
-import "./css/Profile.css"
-import { AuthContext } from "../context/authcontext"
+import "./Profile.css"
+import { AuthContext } from "../../context/authcontext"
 import { useEffect, useState } from "react"
-import {AddressModal} from "../components/AdressModal"
-// import {AiOutlineEdit} from "react-icons/ai "
+import {AddressModal} from "../../components/address/AdressModal"
 const  routes = [
     {id:1,name:"Profile"},
     {id:2,name:"Address"}
